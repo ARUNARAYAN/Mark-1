@@ -14,38 +14,22 @@
         @tailwind utilities;
 
         :root {
-            /* Light Mode Colors */
-            --color-primary-blue-light: #00BFFF; /* Deep Sky Blue */
-            --color-primary-blue-light-hover: #009ACD; /* Darker Sky Blue */
-            --color-primary-blue-light-text: #1E40AF; /* Dark blue for headings */
+            /* Light Mode Colors (now more vibrant) */
+            --color-primary-blue-light: #6A057F; /* Vibrant Purple */
+            --color-primary-blue-light-hover: #4B0082; /* Darker Indigo */
+            --color-primary-blue-light-text: #8A2BE2; /* Blue Violet for headings */
 
-            --color-primary-peach-light: #FFDAB9; /* Peach Puff */
-            --color-primary-peach-light-hover: #EEB4B4; /* Darker Peach */
-            --color-primary-peach-light-text: #D97706; /* Dark orange for headings */
+            --color-primary-peach-light: #FF69B4; /* Hot Pink */
+            --color-primary-peach-light-hover: #FF1493; /* Deeper Pink */
+            --color-primary-peach-light-text: #C71585; /* Medium Violet Red for headings */
 
-            --color-background-light: #f0f4f8; /* Light blue-gray */
-            --color-text-dark-light: #1a202c; /* Main text */
-            --color-text-light-light: #4a5568; /* Secondary text */
-            --color-card-bg-light: rgba(255, 255, 255, 0.7); /* White with transparency */
-            --color-section-bg-light: rgba(255, 255, 255, 0.6); /* Slightly more opaque white for sections */
-            --color-light-blue-light: #E0F7FA; /* For subtle highlights */
-            --color-light-peach-light: #FFF3E0; /* For subtle highlights */
-
-
-            /* Dark Mode Colors - Adjusted for readability */
-            --color-primary-blue-dark: #A5D6A7; /* Lighter Green for better contrast */
-            --color-primary-blue-dark-hover: #81C784;
-            --color-primary-blue-dark-text: #C8E6C9; /* Even lighter green for headings */
-
-            --color-primary-peach-dark: #FFCCBC; /* Lighter Orange for better contrast */
-            --color-primary-peach-dark-hover: #FFAB91;
-            --color-primary-peach-dark-text: #FFE0B2; /* Even lighter orange for headings */
-
-            --color-background-dark: #121212; /* Very dark gray */
-            --color-text-dark-dark: #E0E0E0; /* Light gray for main text */
-            --color-text-light-dark: #BDBDBD; /* Medium gray for secondary text */
-            --color-card-bg-dark: rgba(30, 30, 30, 0.7); /* Darker transparent black */
-            --color-section-bg-dark: rgba(50, 50, 50, 0.6); /* Darker transparent black for sections */
+            --color-background-light: #F8F4F8; /* Light off-white */
+            --color-text-dark-light: #2D3748; /* Darker gray for main text */
+            --color-text-light-light: #4A5568; /* Medium gray for secondary text */
+            --color-card-bg-light: rgba(255, 255, 255, 0.9); /* White with more transparency */
+            --color-section-bg-light: rgba(255, 255, 255, 0.8); /* Slightly more opaque white for sections */
+            --color-light-blue-light: #E6E6FA; /* Lavender blush for subtle highlights */
+            --color-light-peach-light: #FFF0F5; /* Lavender blush for subtle highlights */
         }
 
         /* Base styles for the body and textured background */
@@ -59,89 +43,45 @@
             min-height: 100vh; /* Ensure it takes full viewport height */
             margin: 0;
             overflow-x: hidden; /* Prevent horizontal scroll */
-            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
-        }
-
-        /* Light Mode Styles (Default) */
-        body[data-theme="light"] {
             background-color: var(--color-background-light);
             /* Subtle dotted texture */
             background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
             background-size: 20px 20px;
             color: var(--color-text-dark-light);
         }
-        body[data-theme="light"] .text-gray-800 { color: var(--color-text-dark-light); }
-        body[data-theme="light"] .text-gray-600 { color: var(--color-text-light-light); }
-        body[data-theme="light"] .glass-card {
+
+        /* Light Mode Styles (Default) - now the only mode */
+        .text-gray-800 { color: var(--color-text-dark-light); }
+        .text-gray-600 { color: var(--color-text-light-light); }
+        .glass-card {
             background-color: var(--color-card-bg-light);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Stronger border for glass effect */
         }
-        body[data-theme="light"] .glass-section {
+        .glass-section {
             background-color: var(--color-section-bg-light);
         }
-        body[data-theme="light"] #hamburgerMenu {
-            background-color: rgba(255, 255, 255, 0.95);
+        #hamburgerMenu {
+            background-color: rgba(255, 255, 255, 0.98); /* Almost opaque white */
         }
-        body[data-theme="light"] #hamburgerMenu a {
+        #hamburgerMenu a {
             color: var(--color-text-dark-light);
         }
-        body[data-theme="light"] #hamburgerMenu a:hover {
+        #hamburgerMenu a:hover {
             background-color: var(--color-light-blue-light);
             color: var(--color-primary-blue-light);
         }
-        body[data-theme="light"] .menu-toggle-span {
+        .menu-toggle-span {
             background-color: #333;
         }
         /* Light mode specific button colors */
-        body[data-theme="light"] .bg-blue-custom { background-color: var(--color-primary-blue-light); }
-        body[data-theme="light"] .hover\:bg-blue-custom-dark:hover { background-color: var(--color-primary-blue-light-hover); }
-        body[data-theme="light"] .text-blue-700 { color: var(--color-primary-blue-light-text); }
-        body[data-theme="light"] .bg-peach-custom { background-color: var(--color-primary-peach-light); }
-        body[data-theme="light"] .hover\:bg-peach-custom-dark:hover { background-color: var(--color-primary-peach-light-hover); }
-        body[data-theme="light"] .text-orange-700 { color: var(--color-primary-peach-light-text); }
-        body[data-theme="light"] .bg-blue-100 { background-color: var(--color-light-blue-light); }
-        body[data-theme="light"] .bg-orange-100 { background-color: var(--color-light-peach-light); }
-
-
-        /* Dark Mode Overrides */
-        body[data-theme="dark"] {
-            background-color: var(--color-background-dark);
-            /* Subtle dotted texture for dark mode */
-            background-image: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: var(--color-text-dark-dark);
-        }
-        body[data-theme="dark"] .text-gray-800 { color: var(--color-text-dark-dark); }
-        body[data-theme="dark"] .text-gray-600 { color: var(--color-text-light-dark); }
-        body[data-theme="dark"] .glass-card {
-            background-color: var(--color-card-bg-dark);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        body[data-theme="dark"] .glass-section {
-            background-color: var(--color-section-bg-dark);
-        }
-        body[data-theme="dark"] #hamburgerMenu {
-            background-color: rgba(40, 40, 40, 0.95);
-        }
-        body[data-theme="dark"] #hamburgerMenu a {
-            color: var(--color-text-dark-dark);
-        }
-        body[data-theme="dark"] #hamburgerMenu a:hover {
-            background-color: rgba(60, 60, 60, 0.95);
-            color: var(--color-primary-blue-dark);
-        }
-        body[data-theme="dark"] .menu-toggle-span {
-            background-color: #eee;
-        }
-        /* Dark mode specific button colors */
-        body[data-theme="dark"] .bg-blue-custom { background-color: var(--color-primary-blue-dark); }
-        body[data-theme="dark"] .hover\:bg-blue-custom-dark:hover { background-color: var(--color-primary-blue-dark-hover); }
-        body[data-theme="dark"] .text-blue-700 { color: var(--color-primary-blue-dark-text); }
-        body[data-theme="dark"] .bg-peach-custom { background-color: var(--color-primary-peach-dark); }
-        body[data-theme="dark"] .hover\:bg-peach-custom-dark:hover { background-color: var(--color-primary-peach-dark-hover); }
-        body[data-theme="dark"] .text-orange-700 { color: var(--color-primary-peach-dark-text); }
-        body[data-theme="dark"] .bg-blue-100 { background-color: rgba(40, 40, 40, 0.7); }
-        body[data-theme="dark"] .bg-orange-100 { background-color: rgba(60, 60, 60, 0.7); }
+        .bg-blue-custom { background-color: var(--color-primary-blue-light); }
+        .hover\:bg-blue-custom-dark:hover { background-color: var(--color-primary-blue-light-hover); }
+        .text-blue-700 { color: var(--color-primary-blue-light-text); }
+        .bg-peach-custom { background-color: var(--color-primary-peach-light); }
+        .hover\:bg-peach-custom-dark:hover { background-color: var(--color-primary-peach-light-hover); }
+        .text-orange-700 { color: var(--color-primary-peach-light-text); }
+        .bg-blue-100 { background-color: var(--color-light-blue-light); }
+        .bg-orange-100 { background-color: var(--color-light-peach-light); }
 
 
         /* General Glass Effect for main content and sub-pages */
@@ -179,7 +119,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.8); /* Light mode semi-transparent */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent */
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             padding: 1rem 1.5rem;
@@ -188,10 +128,6 @@
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: background-color 0.5s ease, box-shadow 0.5s ease;
-        }
-        body[data-theme="dark"] #topHeader {
-            background-color: rgba(18, 18, 18, 0.8); /* Dark mode semi-transparent */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         #topHeader .btn-header {
             padding: 0.5rem 1rem;
@@ -209,9 +145,6 @@
             color: var(--color-text-dark-light);
             transition: color 0.5s ease;
         }
-        body[data-theme="dark"] #topHeader h1 {
-            color: var(--color-text-dark-dark);
-        }
 
         /* Hamburger menu styling */
         #hamburgerMenu {
@@ -227,6 +160,8 @@
             text-align: left;
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
+            display: flex; /* Use flexbox for internal layout */
+            flex-direction: column; /* Stack items vertically */
         }
         #hamburgerMenu.open {
             right: 0;
@@ -237,6 +172,22 @@
             font-weight: 500;
             text-decoration: none;
             transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        /* Close button for hamburger menu */
+        #hamburgerCloseBtn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--color-text-dark-light);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        #hamburgerCloseBtn:hover {
+            transform: scale(1.1);
+            color: var(--color-primary-blue-light);
         }
 
         /* Hamburger toggle button - now inside header's flex container */
@@ -260,33 +211,6 @@
             transition: all 0.3s ease-in-out;
             background-color: var(--color-text-dark-light); /* Inherit from body text */
         }
-        body[data-theme="dark"] .menu-toggle-span {
-            background-color: var(--color-text-dark-dark);
-        }
-
-        .menu-toggle-button.open .menu-toggle-span:nth-child(1) {
-            transform: translateY(10px) rotate(45deg);
-        }
-        .menu-toggle-button.open .menu-toggle-span:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-toggle-button.open .menu-toggle-span:nth-child(3) {
-            transform: translateY(-10px) rotate(-45deg);
-        }
-
-        /* Keyframes for theme toggle animation (sleep quality themed) */
-        @keyframes sunToMoon {
-            0% { transform: rotate(0deg); opacity: 1; filter: brightness(1); }
-            40% { transform: rotate(120deg); opacity: 0.7; filter: brightness(0.8); }
-            60% { transform: rotate(240deg); opacity: 0.7; filter: brightness(0.8); }
-            100% { transform: rotate(360deg); opacity: 1; filter: brightness(1); }
-        }
-        @keyframes moonToSun {
-            0% { transform: rotate(0deg); opacity: 1; filter: brightness(1); }
-            40% { transform: rotate(-120deg); opacity: 0.7; filter: brightness(0.8); }
-            60% { transform: rotate(-240deg); opacity: 0.7; filter: brightness(0.8); }
-            100% { transform: rotate(-360deg); opacity: 1; filter: brightness(1); }
-        }
 
         /* Specific styling for the sleep quiz */
         .sleep-quiz-question {
@@ -308,13 +232,14 @@
             transform: translateY(0);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More prominent shadow when visible */
         }
-        body[data-theme="dark"] .sleep-quiz-question {
-             /* Dark mode background for questions */
-            background-color: var(--color-section-bg-dark);
-        }
-        body[data-theme="dark"] .sleep-quiz-question.is-visible {
-             /* Dark mode shadow */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+        /* Styles for blurred/unreachable questions */
+        .sleep-quiz-question.blurred-question {
+            filter: blur(5px); /* Apply blur effect */
+            pointer-events: none; /* Disable interaction */
+            user-select: none; /* Prevent text selection */
+            transition: filter 0.6s ease-out, opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition for unblur */
+            opacity: 0.5; /* Slightly faded when blurred */
         }
 
         /* Style for clickable options instead of radio buttons */
@@ -329,7 +254,7 @@
             font-size: 0.95rem; /* Slightly smaller font */
         }
         .quiz-option:hover {
-            background-color: rgba(0, 191, 255, 0.1); /* Light blue hover for choices */
+            background-color: rgba(138, 43, 226, 0.1); /* Light Blue Violet hover for choices */
         }
         .quiz-option.selected {
             background-color: var(--color-primary-blue-light);
@@ -338,18 +263,19 @@
             transform: scale(1.02); /* Bubbly effect on selection */
             border-color: var(--color-primary-blue-light); /* Highlight selected */
         }
-        body[data-theme="dark"] .quiz-option:hover {
-            background-color: rgba(30, 144, 255, 0.15); /* Darker blue hover for choices */
-        }
-        body[data-theme="dark"] .quiz-option.selected {
-            background-color: var(--color-primary-blue-dark);
-            color: var(--color-text-dark-dark); /* Ensure text is readable */
-            border-color: var(--color-primary-blue-dark);
-        }
+        
         /* Hide default radio buttons */
         .quiz-hidden-radio {
             display: none;
         }
+
+        /* Style for submit button when disabled */
+        #sleepQuizForm button[type="submit"].disabled {
+            filter: blur(2px);
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
 
         /* Zolpidem Character Styling */
         #zolpidemCharacter {
@@ -406,11 +332,6 @@
             pointer-events: auto; /* Make it clickable when visible */
         }
 
-        body[data-theme="dark"] #zolpidemBubble {
-            background-color: var(--color-section-bg-dark); /* Darker bubble */
-            color: var(--color-text-dark-dark);
-        }
-
         #zolpidemBubble:before { /* Speech bubble triangle */
             content: '';
             position: absolute;
@@ -422,9 +343,6 @@
             border-bottom: 10px solid transparent;
             border-right: 10px solid var(--color-light-blue-light); /* Matches bubble color */
             transition: border-right-color 0.5s ease;
-        }
-        body[data-theme="dark"] #zolpidemBubble:before {
-            border-right: 10px solid var(--color-section-bg-dark); /* Matches dark bubble color */
         }
 
         /* Full page animation for Zolpidem (now a modal overlay) */
@@ -467,9 +385,6 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
-        body[data-theme="dark"] .zolpidem-modal-content {
-            background-color: var(--color-card-bg-dark);
-        }
 
         #zolpidemFullPage .full-page-emoji {
             font-size: 10rem; /* Very large emoji */
@@ -481,9 +396,6 @@
             text-align: center;
             max-width: 80%;
             margin-bottom: 2rem;
-        }
-        body[data-theme="dark"] #zolpidemFullPage .full-page-comment {
-            color: var(--color-text-dark-dark); /* Adjust for dark mode if modal background changes */
         }
 
 
@@ -508,24 +420,19 @@
         .zolpidem-final-sad .full-page-emoji {
             animation: sadSob 2s infinite ease-in-out;
         }
-
-        /* No need for body.zolpidem-active class anymore since modal overlays */
     </style>
 </head>
-<body data-theme="light">
+<body>
     <!-- Fixed Top Header Bar -->
     <header id="topHeader">
         <!-- Logo on the left -->
         <button onclick="showPage('main-content')" class="btn-header text-4xl leading-none" aria-label="Home">
-            ✨
+            🥳
         </button>
         <!-- Heading in the center -->
         <h1 class="text-xl sm:text-2xl">Sleep Quality Insights</h1>
-        <!-- Right-aligned group for Theme Toggle & Hamburger Toggle -->
+        <!-- Right-aligned group for Hamburger Toggle -->
         <div class="flex items-center space-x-4">
-            <button id="themeToggleBtn" onclick="toggleTheme()" class="bg-peach-custom hover:bg-peach-custom-dark text-gray-800 btn-header">
-                <span id="themeIcon" class="text-xl">☀️</span>
-            </button>
             <button id="menuToggle" aria-label="Toggle Navigation Menu" onclick="toggleMenu()" class="menu-toggle-button">
                 <span class="menu-toggle-span"></span>
                 <span class="menu-toggle-span"></span>
@@ -536,17 +443,20 @@
 
     <!-- Hamburger Menu Content -->
     <div id="hamburgerMenu">
-        <a href="#" onclick="showPage('main-content'); toggleMenu();">🏠 Home</a>
-        <a href="#" onclick="showPage('sleep-quiz-page'); toggleMenu();">😴 Sleep Quality Quiz</a>
-        <a href="#" onclick="showPage('full-summary-page'); toggleMenu();">📜 Detailed Study Snapshot</a>
-        <a href="#" onclick="showPage('connect-page'); toggleMenu();">📧 Connect</a>
+        <button id="hamburgerCloseBtn" aria-label="Close Navigation Menu" onclick="toggleMenu()">
+            ❌ Close
+        </button>
+        <a href="#" onclick="showPage('main-content');">🏠 Home</a>
+        <a href="#" onclick="showPage('sleep-quiz-page');">😴 Sleep Quality Quiz</a>
+        <a href="#" onclick="showPage('full-summary-page');">📜 Detailed Study Snapshot</a>
+        <a href="#" onclick="showPage('connect-page');">📧 Connect</a>
     </div>
 
     <!-- Main Content Card (Glass Effect) -->
     <div id="main-content" class="glass-card p-8 sm:p-12 md:p-16 mt-20"> <!-- Added mt-20 for header spacing -->
         <!-- Logo and Main Title -->
         <div class="mb-6 flex flex-col items-center">
-            <span class="text-6xl mb-4 animate-pulse">✨</span> <!-- Professional symmetrical emoji logo -->
+            <span class="text-6xl mb-4 animate-bounce">🥳</span> <!-- Party emoji logo with subtle bounce -->
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 animate-float">
                 A Hidden Token of Gratitude
             </h1>
@@ -573,7 +483,7 @@
                 Discover an Easter Egg 🐣
             </button>
             <button onclick="showPage('connect-page')"
-                    class="bg-peach-custom hover:bg-peach-custom-dark text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                    class="bg-peach-custom hover:bg-peach-custom-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 Connect with Author 📧
             </button>
         </div>
@@ -585,7 +495,7 @@
     </div>
 
     <!-- Sleep Quality Quiz Page (Hidden by default) -->
-    <div id="sleep-quiz-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20 pb-40" style="display: none;"> <!-- Added display: none; -->
+    <div id="sleep-quiz-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20 pb-40" style="display: none;">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">😴 Your Sleep Quality Quiz!</h2>
         <p class="text-xl sm:text-2xl text-gray-600 mb-8">
             A fun little check on your recent sleep patterns. Be honest for the best (and most entertaining) results!
@@ -657,7 +567,7 @@
 
 
     <!-- Full Summary Page (Hidden by default) -->
-    <div id="full-summary-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;"> <!-- Added display: none; -->
+    <div id="full-summary-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">📜 Detailed Study Snapshot</h2>
         <h3 class="text-xl sm:text-2xl text-gray-600 mb-8">"Psychotropic drugs and its effect on sleep quality in adults at a tertiary care center-a cross-sectional study."</h3>
 
@@ -682,7 +592,7 @@
                 <li><strong>Adverse Drug Reactions (ADRs):</strong> EPS (Extrapyramidal Symptoms) and weight gain were the most commonly reported ADRs. Trihexyphenidyl was frequently used to manage or prevent EPS.</li>
             </ul>
 
-            <p><strong>Conclusion:</strong> This study underscores the varied impact of psychotropic medications on sleep quality. While many participants reported good sleep quality, specific drug classes were associated with distinct sleep disturbances. These findings highlight the importance of individualized treatment approaches, meticulous monitoring of sleep parameters, and considering the broader pharmacological profile (including anticholinergic burden and pDDIs) to optimize patient care and minimize sleep disturbances in individuals with psychiatric disorders.</p>
+            <p><strong>Special Acknowledgement:</strong> A profound thank you to my esteemed guide, <strong>Dr. Kavitha Rajarathna, Professor, Department of Pharmacology</strong>, for her invaluable guidance and unwavering support throughout this research.</p>
         </div>
 
         <button onclick="showPage('main-content')" class="mt-8 bg-blue-custom hover:bg-blue-custom-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
@@ -691,7 +601,7 @@
     </div>
 
     <!-- Connect Page (Hidden by default) -->
-    <div id="connect-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;"> <!-- Added display: none; -->
+    <div id="connect-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">📧 Connect with Dr. Arun T N</h2>
 
         <div class="text-left text-gray-700 space-y-4">
@@ -705,19 +615,32 @@
                 <li>For clinical consultations, kindly follow the standard referral procedures through Bangalore Medical College & Research Institute.</li>
             </ul>
 
-            <p>While direct contact details are not provided on this public snapshot, you can generally connect with me through professional academic networks or by contacting the Department of Pharmacology at Bangalore Medical Medical College & Research Institute. I look forward to potential opportunities for knowledge exchange and collaboration.</p>
-        </div>
+            <div class="mt-8 glass-section">
+                <h3 class="text-2xl font-semibold text-blue-700 mb-4">A Foundation of Support</h3>
+                <div class="text-left text-gray-700 space-y-2">
+                    <p>To my beloved parents, <strong>T D Narayana</strong> and <strong>M Rathnamma</strong>, and my brother, <strong>Darshan T N</strong>, your unwavering belief and endless love have been my constant inspiration and strength.</p>
 
-        <div class="mt-8 glass-section">
-            <h3 class="text-2xl font-semibold text-blue-700 mb-4">A Foundation of Support</h3>
-            <div class="text-left text-gray-700 space-y-2">
-                <p>My journey has been built on an incredible foundation of love and encouragement. To my beloved parents, <strong>T D Narayana</strong> and <strong>M Rathnamma</strong>, your unwavering belief has been my constant inspiration. And to my brother, <strong>Darshan T N</strong>, thank you for being a steadfast pillar of support and companionship.</p>
-                <p>The wisdom shared by my **teachers** at Bangalore Medical College & Research Institute, and the camaraderie of my **friends** throughout this challenging yet rewarding period, have been invaluable. Each of you has played a pivotal role in shaping this experience. Thank you.</p>
+                    <p class="mt-4">My deepest gratitude to my esteemed teachers and professors at Bangalore Medical College & Research Institute:</p>
+                    <ul class="list-disc list-inside pl-4">
+                        <li><strong>Dr. Kavitha Rajarathna, MD, Professor, Department of Pharmacology</strong></li>
+                        <li><strong>Dr. Geetha A., MD, Professor and Head, Department of Pharmacology</strong></li>
+                        <li><strong>Dr. Mamatha K R., MD, Professor, Department of Pharmacology</strong></li>
+                        <li><strong>Dr. Sushma M, MD, Professor, Department of Pharmacology</strong></li>
+                        <li><strong>Dr. Praveen Panchaksharimath, MD, Associate Professor</strong></li>
+                        <li><strong>Dr. Laxminarayana Kamath, MD, Assistant Professor</strong></li>
+                        <li><strong>Dr. Vijayalakshmi, MD, Assistant Professor</strong></li>
+                    </ul>
+
+                    <p class="mt-4">And to my wonderful friends, who made every challenge surmountable and every success sweeter, especially my UG friends:</p>
+                    <p>
+                        Dr. Ashadeepa S G, Dr. Chinumaya, Dr. Pramod V, Dr. Darshan, Dr. Ishwar K, Dr. Pooja Magadum, Dr. Shadaksharappa Gouda, Dr. Yamini kanakamedala, Dr. Maruthi Prasanna, Dr. Viswanathan, Dr. Shreya Bhat, Dr. Karthik Raja, Dr. Pradeep Katake, Dr. Sushma P, Dr. Subasree.
+                    </p>
+                </div>
             </div>
         </div>
 
 
-        <button onclick="showPage('main-content')" class="mt-8 bg-peach-custom hover:bg-peach-custom-dark text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+        <button onclick="showPage('main-content')" class="mt-8 bg-peach-custom hover:bg-peach-custom-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
             ← Back to Main Page
         </button>
     </div>
@@ -733,46 +656,34 @@
         <div class="zolpidem-modal-content">
             <span id="fullPageZolpidemEmoji" class="full-page-emoji"></span>
             <p id="fullPageZolpidemComment" class="full-page-comment text-gray-800"></p> <!-- Ensure text is readable against modal background -->
-            <button onclick="hideFullPageZolpidem()" class="mt-8 bg-peach-custom hover:bg-peach-custom-dark text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <button onclick="hideFullPageZolpidem()" class="mt-8 bg-peach-custom hover:bg-peach-custom-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 Back to Quiz
             </button>
         </div>
     </div>
 
     <script>
-        // JavaScript for managing theme manually
-        function toggleTheme() {
-            const body = document.body;
-            const themeIcon = document.getElementById('themeIcon');
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            body.setAttribute('data-theme', newTheme);
-
-            // Apply animation based on theme change
-            if (newTheme === 'dark') {
-                themeIcon.innerHTML = ' '; // Moon
-                themeIcon.style.animation = 'sunToMoon 1s forwards'; // Sleep-themed animation
-            } else {
-                themeIcon.innerHTML = '☀️'; // Sun
-                themeIcon.style.animation = 'moonToSun 1s forwards'; // Sleep-themed animation
-            }
-            // Reset animation after it finishes to allow re-triggering
-            setTimeout(() => {
-                themeIcon.style.animation = 'none';
-            }, 1000);
-        }
+        // Global variables for quiz state
+        const quizAnswers = { q1: null, q2: null, q3: null, q4: null, q5: null };
+        const questions = ['q1', 'q2', 'q3', 'q4', 'q5']; // Array of question keys
+        const quizQuestionElements = []; // To store DOM references of question divs
 
         // JavaScript for managing page visibility
         function showPage(pageId) {
             // Hide all "pages"
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('sleep-quiz-page').style.display = 'none';
-            document.getElementById('full-summary-page').style.display = 'none';
-            document.getElementById('connect-page').style.display = 'none';
+            const allPages = ['main-content', 'sleep-quiz-page', 'full-summary-page', 'connect-page'];
+            allPages.forEach(id => {
+                const pageElement = document.getElementById(id);
+                if (pageElement) {
+                    pageElement.style.display = 'none';
+                }
+            });
 
             // Show the requested page
-            document.getElementById(pageId).style.display = 'block';
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+            }
 
             // Scroll to the top of the newly displayed page
             window.scrollTo(0, 0);
@@ -780,12 +691,27 @@
             // Close hamburger menu if open
             const menu = document.getElementById('hamburgerMenu');
             const toggleButton = document.querySelector('.menu-toggle-button');
-            menu.classList.remove('open'); // Ensure menu closes
-            toggleButton.classList.remove('open'); // Ensure toggle button resets
+            if (menu.classList.contains('open')) {
+                toggleMenu(); // Call toggleMenu to close it and reset button state
+            }
 
-            // Hide Zolpidem and his bubble when navigating away from quiz, UNLESS it's the quiz page itself.
-            // If it's the quiz page, ensure he's shown with an initial greeting.
+            // Handle Zolpidem and quiz state for the sleep quiz page
             if (pageId === 'sleep-quiz-page') {
+                // Reset all quiz questions and answers
+                quizQuestionElements.forEach((question, index) => {
+                    question.classList.remove('is-visible'); // Remove visibility
+                    question.classList.add('blurred-question'); // Blur all questions initially
+                    question.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected')); // Remove selected state
+                    quizAnswers[questions[index]] = null; // Reset quizAnswers state
+                });
+
+                // Only make the first question visible and unblurred
+                if (quizQuestionElements.length > 0) {
+                    quizQuestionElements[0].classList.remove('blurred-question'); // Unblur first question
+                    quizQuestionElements[0].classList.add('is-visible'); // Make first question visible
+                }
+
+                // Initial Zolpidem greeting for quiz page
                 const initialGreeting = zolpidemQuestionResponses.initialQuizGreeting;
                 zolpidemBubble.innerText = initialGreeting.comment;
                 zolpidemEmoji.innerText = initialGreeting.emoji;
@@ -793,7 +719,12 @@
                 zolpidemBubble.classList.add('show');
                 zolpidemEmoji.classList.add('bounce-animation'); // Initial bounce
                 setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+
+                // Disable submit button initially
+                document.getElementById('sleepQuizForm').querySelector('button[type="submit"]').classList.add('disabled');
+
             } else {
+                // Hide Zolpidem when navigating away from quiz page
                 zolpidemBubble.classList.remove('show');
                 zolpidemCharacter.classList.remove('show');
             }
@@ -812,10 +743,11 @@
 
         // JavaScript for scroll-in animation (Intersection Observer)
         document.addEventListener("DOMContentLoaded", function() {
-            // Set initial theme to light by default
-            document.body.setAttribute('data-theme', 'light');
-            document.getElementById('themeIcon').innerHTML = '☀️';
-
+            // Populate quizQuestionElements once DOM is ready
+            document.querySelectorAll(".sleep-quiz-question").forEach(q => quizQuestionElements.push(q));
+            
+            // Initial page load should default to main-content
+            showPage('main-content');
 
             const sections = document.querySelectorAll(".fade-in-section");
 
@@ -836,36 +768,28 @@
                 observer.observe(section);
             });
 
-            // Observe sleep quiz questions for staggered appearance
-            const quizQuestions = document.querySelectorAll(".sleep-quiz-question");
-
+            // Observer for dynamically revealed quiz questions (only adds 'is-visible' once unblurred)
             const quizObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    // Only apply 'is-visible' if the question is NOT blurred
+                    if (entry.isIntersecting && !entry.target.classList.contains('blurred-question')) {
                         entry.target.classList.add("is-visible");
-                        // Stop observing once visible to prevent re-triggering animations
-                        quizObserver.unobserve(entry.target);
+                        // We can unobserve once visible to prevent re-triggering,
+                        // but it's simpler to let it remain observed and rely on
+                        // `blurred-question` to control primary visibility/interactivity.
                     }
                 });
             }, {
-                rootMargin: "0px", // default
+                rootMargin: "0px",
                 threshold: 0.5 // Trigger when 50% of the question is visible
             });
 
-            quizQuestions.forEach(question => {
+            quizQuestionElements.forEach(question => {
                 quizObserver.observe(question);
             });
-            
-            // Initialize with main content shown (which is the default in HTML)
-            // showPage('main-content'); // This will be implicitly handled by the HTML structure
         });
 
         // Sleep Quiz Logic
-        // Store selected answers as single values per question
-        const quizAnswers = {
-            q1: null, q2: null, q3: null, q4: null, q5: null
-        }; 
-        
         // Sleepless Zolpidem's comments and emojis for each question's answers
         const zolpidemQuestionResponses = {
             q1: {
@@ -914,6 +838,16 @@
                 { comment: "A strategic pivot! Sleepless Zolpidem acknowledges the adaptability. Very well. 😼", emoji: "😼" },
                 { comment: "Indeed, a new selection. Sleepless Zolpidem is always ready for evolved perspectives. 🦊", emoji: "🦊" }
             ],
+            // New responses for out-of-order clicks
+            outOfOrder: [
+                { comment: "Sleepless Zolpidem gently reminds: Let's tackle these one at a time. The current question awaits your insightful response! 😌", emoji: "😌" },
+                { comment: "A small pause, if you please. Sleepless Zolpidem needs answers in sequence to provide the most accurate insights. 🙏", emoji: "🙏" },
+                { comment: "Hold your horses! Sleepless Zolpidem suggests focusing on the present question. One step at a time for optimal analysis. 🚶", emoji: "🚶" },
+                { comment: "Oh, eager beaver! Sleepless Zolpidem appreciates your enthusiasm, but let's complete the current question first. 😉", emoji: "😉" },
+                { comment: "My dear friend, let's keep things orderly. Sleepless Zolpidem kindly requests you address the previous question. ✍️", emoji: "✍️" },
+                { comment: "Sleepless Zolpidem senses you're skipping ahead! Please provide your answer to the active question to proceed. 🤔", emoji: "🤔" },
+                { comment: "Whoa there, let's keep to the script! Zolpidem needs your input on the current task before moving on. 🐢", emoji: "🐢" }
+            ],
             // Initial comment for Zolpidem when quiz page loads
             initialQuizGreeting: { comment: "Welcome to the Sleep Quality Quiz! Let's unravel your sleep patterns. Tap an option to begin. 😊", emoji: "😊" }
         };
@@ -931,9 +865,34 @@
         document.querySelectorAll('.quiz-option-group').forEach(group => {
             group.querySelectorAll('.quiz-option').forEach(option => {
                 option.addEventListener('click', function() {
+                    const questionElement = this.closest('.sleep-quiz-question');
                     const questionName = group.getAttribute('data-question');
+                    const questionIndex = questions.indexOf(questionName); // Get index based on global 'questions' array
+
+                    // Determine the index of the first unanswered question
+                    let firstUnansweredIndex = -1;
+                    for (let i = 0; i < questions.length; i++) {
+                        if (quizAnswers[questions[i]] === null) {
+                            firstUnansweredIndex = i;
+                            break;
+                        }
+                    }
+
+                    // If the clicked question is not the current first unanswered question
+                    if (questionIndex !== firstUnansweredIndex) {
+                        const outOfOrderResponses = zolpidemQuestionResponses.outOfOrder;
+                        const responseData = outOfOrderResponses[Math.floor(Math.random() * outOfOrderResponses.length)];
+                        zolpidemBubble.innerText = responseData.comment;
+                        zolpidemEmoji.innerText = responseData.emoji;
+                        zolpidemCharacter.classList.add('show');
+                        zolpidemBubble.classList.add('show');
+                        zolpidemEmoji.classList.add('bounce-animation');
+                        setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+                        return; // Stop further processing for this click
+                    }
+
                     const newValue = parseInt(this.getAttribute('data-value'));
-                    const oldValue = quizAnswers[questionName]; // Get previously selected value
+                    const oldValue = quizAnswers[questionName];
 
                     let responseData;
 
@@ -948,11 +907,9 @@
 
                     // Determine comment based on whether the answer was changed or newly selected
                     if (oldValue !== null && oldValue !== newValue) {
-                        // User changed their mind - select a random "change mind" comment
                         const changeMindResponses = zolpidemQuestionResponses.changeMind;
                         responseData = changeMindResponses[Math.floor(Math.random() * changeMindResponses.length)];
                     } else {
-                        // First selection or re-selecting the same value - use the direct response
                         responseData = zolpidemQuestionResponses[questionName][newValue];
                     }
                     
@@ -960,11 +917,39 @@
                     zolpidemBubble.innerText = responseData.comment;
                     zolpidemEmoji.innerText = responseData.emoji;
                     
-                    zolpidemCharacter.classList.add('show'); // Show character with transition
-                    zolpidemBubble.classList.add('show'); // Show bubble with transition
-                    zolpidemEmoji.classList.add('bounce-animation'); // Add bounce animation
-                    // Remove animation class after it completes to allow re-triggering
+                    zolpidemCharacter.classList.add('show');
+                    zolpidemBubble.classList.add('show');
+                    zolpidemEmoji.classList.add('bounce-animation');
                     setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+
+                    // Logic to reveal the next question
+                    const nextQuestionIndex = questionIndex + 1;
+                    if (nextQuestionIndex < quizQuestionElements.length) {
+                        const nextQuestionElement = quizQuestionElements[nextQuestionIndex];
+                        if (nextQuestionElement.classList.contains('blurred-question')) {
+                            nextQuestionElement.classList.remove('blurred-question'); // Unblur the next question
+                            // The IntersectionObserver will handle adding 'is-visible' and the fade/slide animation
+                            // Ensure the next question becomes visible instantly if already in viewport
+                            if (nextQuestionElement.getBoundingClientRect().top < window.innerHeight && nextQuestionElement.getBoundingClientRect().bottom > 0) {
+                                nextQuestionElement.classList.add('is-visible');
+                            }
+                        }
+                    }
+
+                    // Check if all questions are answered to enable submit button
+                    let allQuestionsAnswered = true;
+                    for(let i = 0; i < questions.length; i++) {
+                        if (quizAnswers[questions[i]] === null) {
+                            allQuestionsAnswered = false;
+                            break;
+                        }
+                    }
+                    const submitButton = document.getElementById('sleepQuizForm').querySelector('button[type="submit"]');
+                    if (allQuestionsAnswered) {
+                        submitButton.classList.remove('disabled');
+                    } else {
+                        submitButton.classList.add('disabled');
+                    }
                 });
             });
         });
@@ -972,22 +957,16 @@
         document.getElementById('sleepQuizForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
 
-            let totalScore = 0;
-            const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
-            let allAnswered = true;
-
-            questions.forEach(q => {
-                if (quizAnswers[q] === null) { // Check if an option is selected for the question
-                    allAnswered = false;
-                } else {
-                    totalScore += quizAnswers[q];
-                }
-            });
-
-            if (!allAnswered) {
+            const submitButton = document.getElementById('sleepQuizForm').querySelector('button[type="submit"]');
+            if (submitButton.classList.contains('disabled')) {
                 alert("Please answer all questions to get your sleep score!");
                 return;
             }
+
+            let totalScore = 0;
+            questions.forEach(q => { // Use global questions array
+                totalScore += quizAnswers[q];
+            });
 
             // Hide regular Zolpidem and its bubble
             // Also hide the main content of the quiz page before showing modal, for clean transition
@@ -1006,11 +985,11 @@
                 emoji = "🌟";
                 animationClass = "zolpidem-final-happy";
             } else if (totalScore <= 10) {
-                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Solid. A good night's rest sets the stage for productive days. Might there be a tiny corner where even better sleep could be found? Just a thought! 👍`;
+                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Solid. A good night's rest sets the stage for productive days. Might there be a tiny corner where even better sleep could be found? Just a thought! �`;
                 emoji = "👍";
                 animationClass = "zolpidem-final-happy"; // Still relatively good
             } else if (totalScore <= 15) {
-                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Not quite optimal. Is the ambition burning a little too bright after hours? Remember, the greatest minds pause to recharge. Consider a little more time with your pillow. 😴`;
+                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Not quite optimal. Is the ambition burning a little too bright after hours? Remember, the greatest minds pauses to recharge. Consider a little more time with your pillow. 😴`;
                 emoji = "😴";
                 animationClass = "zolpidem-final-sad"; // Leaning towards concerning
             } else {
@@ -1051,4 +1030,4 @@
     </script>
 </body>
 </html>
- 
+�
