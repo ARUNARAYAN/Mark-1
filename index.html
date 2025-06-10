@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Thank You</title>
+    <!-- Load Tailwind CSS for responsive utility classes and base styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Configure Tailwind to use custom colors */
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        :root {
+            /* Light Mode Colors */
+            --color-primary-blue-light: #00BFFF; /* Deep Sky Blue */
+            --color-primary-blue-light-hover: #009ACD; /* Darker Sky Blue */
+            --color-primary-blue-light-text: #1E40AF; /* Dark blue for headings */
+
+            --color-primary-peach-light: #FFDAB9; /* Peach Puff */
+            --color-primary-peach-light-hover: #EEB4B4; /* Darker Peach */
+            --color-primary-peach-light-text: #D97706; /* Dark orange for headings */
+
+            --color-background-light: #f0f4f8; /* Light blue-gray */
+            --color-text-dark-light: #1a202c; /* Main text */
+            --color-text-light-light: #4a5568; /* Secondary text */
+            --color-card-bg-light: rgba(255, 255, 255, 0.7); /* White with transparency */
+            --color-section-bg-light: rgba(255, 255, 255, 0.6); /* Slightly more opaque white for sections */
+            --color-light-blue-light: #E0F7FA; /* For subtle highlights */
+            --color-light-peach-light: #FFF3E0; /* For subtle highlights */
+
+
+            /* Dark Mode Colors - Adjusted for readability */
+            --color-primary-blue-dark: #A5D6A7; /* Lighter Green for better contrast */
+            --color-primary-blue-dark-hover: #81C784;
+            --color-primary-blue-dark-text: #C8E6C9; /* Even lighter green for headings */
+
+            --color-primary-peach-dark: #FFCCBC; /* Lighter Orange for better contrast */
+            --color-primary-peach-dark-hover: #FFAB91;
+            --color-primary-peach-dark-text: #FFE0B2; /* Even lighter orange for headings */
+
+            --color-background-dark: #121212; /* Very dark gray */
+            --color-text-dark-dark: #E0E0E0; /* Light gray for main text */
+            --color-text-light-dark: #BDBDBD; /* Medium gray for secondary text */
+            --color-card-bg-dark: rgba(30, 30, 30, 0.7); /* Darker transparent black */
+            --color-section-bg-dark: rgba(50, 50, 50, 0.6); /* Darker transparent black for sections */
+        }
+
+        /* Base styles for the body and textured background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-size: 40px 40px; /* Size of the texture pattern */
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top for scrollable content */
+            min-height: 100vh; /* Ensure it takes full viewport height */
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+        }
+
+        /* Light Mode Styles (Default) */
+        body[data-theme="light"] {
+            background-color: var(--color-background-light);
+            /* Subtle dotted texture */
+            background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--color-text-dark-light);
+        }
+        body[data-theme="light"] .text-gray-800 { color: var(--color-text-dark-light); }
+        body[data-theme="light"] .text-gray-600 { color: var(--color-text-light-light); }
+        body[data-theme="light"] .glass-card {
+            background-color: var(--color-card-bg-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        body[data-theme="light"] .glass-section {
+            background-color: var(--color-section-bg-light);
+        }
+        body[data-theme="light"] #hamburgerMenu {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        body[data-theme="light"] #hamburgerMenu a {
+            color: var(--color-text-dark-light);
+        }
+        body[data-theme="light"] #hamburgerMenu a:hover {
+            background-color: var(--color-light-blue-light);
+            color: var(--color-primary-blue-light);
+        }
+        body[data-theme="light"] .menu-toggle-span {
+            background-color: #333;
+        }
+        /* Light mode specific button colors */
+        body[data-theme="light"] .bg-blue-custom { background-color: var(--color-primary-blue-light); }
+        body[data-theme="light"] .hover\:bg-blue-custom-dark:hover { background-color: var(--color-primary-blue-light-hover); }
+        body[data-theme="light"] .text-blue-700 { color: var(--color-primary-blue-light-text); }
+        body[data-theme="light"] .bg-peach-custom { background-color: var(--color-primary-peach-light); }
+        body[data-theme="light"] .hover\:bg-peach-custom-dark:hover { background-color: var(--color-primary-peach-light-hover); }
+        body[data-theme="light"] .text-orange-700 { color: var(--color-primary-peach-light-text); }
+        body[data-theme="light"] .bg-blue-100 { background-color: var(--color-light-blue-light); }
+        body[data-theme="light"] .bg-orange-100 { background-color: var(--color-light-peach-light); }
+
+
+        /* Dark Mode Overrides */
+        body[data-theme="dark"] {
+            background-color: var(--color-background-dark);
+            /* Subtle dotted texture for dark mode */
+            background-image: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--color-text-dark-dark);
+        }
+        body[data-theme="dark"] .text-gray-800 { color: var(--color-text-dark-dark); }
+        body[data-theme="dark"] .text-gray-600 { color: var(--color-text-light-dark); }
+        body[data-theme="dark"] .glass-card {
+            background-color: var(--color-card-bg-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        body[data-theme="dark"] .glass-section {
+            background-color: var(--color-section-bg-dark);
+        }
+        body[data-theme="dark"] #hamburgerMenu {
+            background-color: rgba(40, 40, 40, 0.95);
+        }
+        body[data-theme="dark"] #hamburgerMenu a {
+            color: var(--color-text-dark-dark);
+        }
+        body[data-theme="dark"] #hamburgerMenu a:hover {
+            background-color: rgba(60, 60, 60, 0.95);
+            color: var(--color-primary-blue-dark);
+        }
+        body[data-theme="dark"] .menu-toggle-span {
+            background-color: #eee;
+        }
+        /* Dark mode specific button colors */
+        body[data-theme="dark"] .bg-blue-custom { background-color: var(--color-primary-blue-dark); }
+        body[data-theme="dark"] .hover\:bg-blue-custom-dark:hover { background-color: var(--color-primary-blue-dark-hover); }
+        body[data-theme="dark"] .text-blue-700 { color: var(--color-primary-blue-dark-text); }
+        body[data-theme="dark"] .bg-peach-custom { background-color: var(--color-primary-peach-dark); }
+        body[data-theme="dark"] .hover\:bg-peach-custom-dark:hover { background-color: var(--color-primary-peach-dark-hover); }
+        body[data-theme="dark"] .text-orange-700 { color: var(--color-primary-peach-dark-text); }
+        body[data-theme="dark"] .bg-blue-100 { background-color: rgba(40, 40, 40, 0.7); }
+        body[data-theme="dark"] .bg-orange-100 { background-color: rgba(60, 60, 60, 0.7); }
+
+
+        /* General Glass Effect for main content and sub-pages */
+        .glass-card {
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 90%;
+            width: 800px;
+            margin-top: 2rem; /* Adjusted for fixed header */
+            margin-bottom: 2rem;
+            text-align: center;
+            display: block;
+            overflow: hidden;
+            transition: background-color 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .glass-section {
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-out, background-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        .glass-section:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Fixed Top Header Bar */
+        #topHeader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8); /* Light mode semi-transparent */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        body[data-theme="dark"] #topHeader {
+            background-color: rgba(18, 18, 18, 0.8); /* Dark mode semi-transparent */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        #topHeader .btn-header {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            cursor: pointer; /* Ensure buttons show pointer cursor */
+        }
+        #topHeader .btn-header:hover {
+            transform: translateY(-2px);
+        }
+        #topHeader h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-dark-light);
+            transition: color 0.5s ease;
+        }
+        body[data-theme="dark"] #topHeader h1 {
+            color: var(--color-text-dark-dark);
+        }
+
+        /* Hamburger menu styling */
+        #hamburgerMenu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+            z-index: 1005; /* Higher than topHeader */
+            transition: right 0.4s ease-in-out, background-color 0.5s ease, backdrop-filter 0.5s ease, box-shadow 0.5s ease;
+            padding-top: 5rem;
+            text-align: left;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+        #hamburgerMenu.open {
+            right: 0;
+        }
+        #hamburgerMenu a {
+            display: block;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Hamburger toggle button - now inside header's flex container */
+        .menu-toggle-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 24px;
+            margin-left: 1rem; /* Added space between theme toggle and menu */
+        }
+        .menu-toggle-span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--color-text-dark-light); /* Inherit from body text */
+        }
+        body[data-theme="dark"] .menu-toggle-span {
+            background-color: var(--color-text-dark-dark);
+        }
+
+        .menu-toggle-button.open .menu-toggle-span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+        .menu-toggle-button.open .menu-toggle-span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle-button.open .menu-toggle-span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        /* Keyframes for theme toggle animation (sleep quality themed) */
+        @keyframes sunToMoon {
+            0% { transform: rotate(0deg); opacity: 1; filter: brightness(1); }
+            40% { transform: rotate(120deg); opacity: 0.7; filter: brightness(0.8); }
+            60% { transform: rotate(240deg); opacity: 0.7; filter: brightness(0.8); }
+            100% { transform: rotate(360deg); opacity: 1; filter: brightness(1); }
+        }
+        @keyframes moonToSun {
+            0% { transform: rotate(0deg); opacity: 1; filter: brightness(1); }
+            40% { transform: rotate(-120deg); opacity: 0.7; filter: brightness(0.8); }
+            60% { transform: rotate(-240deg); opacity: 0.7; filter: brightness(0.8); }
+            100% { transform: rotate(-360deg); opacity: 1; filter: brightness(1); }
+        }
+
+        /* Specific styling for the sleep quiz */
+        .sleep-quiz-question {
+            background-color: var(--color-section-bg-light); /* Will adapt to dark mode via data-theme */
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem; /* Increased margin for better separation */
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            opacity: 0; /* Initially hidden for dynamic appearance */
+            transform: translateY(20px); /* Start slightly below for slide-up effect */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease; /* Smooth transition for appearance and shadow */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Default shadow */
+        }
+
+        .sleep-quiz-question.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More prominent shadow when visible */
+        }
+        body[data-theme="dark"] .sleep-quiz-question {
+             /* Dark mode background for questions */
+            background-color: var(--color-section-bg-dark);
+        }
+        body[data-theme="dark"] .sleep-quiz-question.is-visible {
+             /* Dark mode shadow */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style for clickable options instead of radio buttons */
+        .quiz-option {
+            display: block;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease, transform 0.1s ease-out;
+            border: 1px solid transparent; /* Initial transparent border */
+            font-size: 0.95rem; /* Slightly smaller font */
+        }
+        .quiz-option:hover {
+            background-color: rgba(0, 191, 255, 0.1); /* Light blue hover for choices */
+        }
+        .quiz-option.selected {
+            background-color: var(--color-primary-blue-light);
+            color: white;
+            font-weight: 600;
+            transform: scale(1.02); /* Bubbly effect on selection */
+            border-color: var(--color-primary-blue-light); /* Highlight selected */
+        }
+        body[data-theme="dark"] .quiz-option:hover {
+            background-color: rgba(30, 144, 255, 0.15); /* Darker blue hover for choices */
+        }
+        body[data-theme="dark"] .quiz-option.selected {
+            background-color: var(--color-primary-blue-dark);
+            color: var(--color-text-dark-dark); /* Ensure text is readable */
+            border-color: var(--color-primary-blue-dark);
+        }
+        /* Hide default radio buttons */
+        .quiz-hidden-radio {
+            display: none;
+        }
+
+        /* Zolpidem Character Styling */
+        #zolpidemCharacter {
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Always visible at the bottom */
+            left: 20px;
+            display: flex;
+            align-items: flex-end;
+            z-index: 990; /* Below header/menu, above content */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* For smooth show/hide */
+            opacity: 0; /* Initially hidden with opacity for transition */
+            transform: translateY(20px); /* Start slightly down for pop-up effect */
+        }
+        #zolpidemCharacter.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #zolpidemEmoji {
+            font-size: 4rem; /* Larger emoji for character */
+            line-height: 1;
+            margin-right: 0.75rem;
+            cursor: default; /* Not directly clickable, reacts to quiz options */
+            transition: transform 0.2s ease-out; /* For little bounce */
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bounce-animation {
+            animation: bounce 0.6s ease-out;
+        }
+
+        #zolpidemBubble {
+            background-color: var(--color-light-blue-light); /* Light color for bubble */
+            color: var(--color-text-dark-light);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            max-width: 250px; /* Adjust max width of bubble */
+            text-align: left;
+            position: relative; /* For speech bubble triangle */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background-color 0.5s ease, color 0.5s ease, opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(10px); /* Start slightly off to animate in */
+            pointer-events: none; /* Make it unclickable when hidden */
+            z-index: 1; /* Ensure it's above other elements if needed */
+        }
+        #zolpidemBubble.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto; /* Make it clickable when visible */
+        }
+
+        body[data-theme="dark"] #zolpidemBubble {
+            background-color: var(--color-section-bg-dark); /* Darker bubble */
+            color: var(--color-text-dark-dark);
+        }
+
+        #zolpidemBubble:before { /* Speech bubble triangle */
+            content: '';
+            position: absolute;
+            bottom: 10px; /* Position relative to bubble bottom */
+            left: -8px; /* Position to point towards emoji */
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid var(--color-light-blue-light); /* Matches bubble color */
+            transition: border-right-color 0.5s ease;
+        }
+        body[data-theme="dark"] #zolpidemBubble:before {
+            border-right: 10px solid var(--color-section-bg-dark); /* Matches dark bubble color */
+        }
+
+        /* Full page animation for Zolpidem (now a modal overlay) */
+        #zolpidemFullPage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; /* On top of everything */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        #zolpidemFullPage.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Inner content of the Zolpidem modal */
+        .zolpidem-modal-content {
+            background-color: var(--color-card-bg-light); /* Use card background for consistency */
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            max-width: 90%;
+            width: 500px; /* Fixed width for the modal content */
+            max-height: 90vh; /* Ensure modal doesn't exceed screen height */
+            overflow-y: auto; /* Enable scrolling if content overflows */
+            text-align: center;
+            display: flex; /* Flex for content centering */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        body[data-theme="dark"] .zolpidem-modal-content {
+            background-color: var(--color-card-bg-dark);
+        }
+
+        #zolpidemFullPage .full-page-emoji {
+            font-size: 10rem; /* Very large emoji */
+            margin-bottom: 2rem;
+        }
+        #zolpidemFullPage .full-page-comment {
+            color: var(--color-text-dark-light); /* Text inside modal should respect theme */
+            font-size: 2rem;
+            text-align: center;
+            max-width: 80%;
+            margin-bottom: 2rem;
+        }
+        body[data-theme="dark"] #zolpidemFullPage .full-page-comment {
+            color: var(--color-text-dark-dark); /* Adjust for dark mode if modal background changes */
+        }
+
+
+        /* Animations for final verdict */
+        @keyframes happyBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            25% { transform: translateY(-30px) scale(1.05); }
+            50% { transform: translateY(0) scale(1); }
+            75% { transform: translateY(-15px) scale(1.02); }
+        }
+
+        @keyframes sadSob {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            25% { transform: translateY(-5px) rotate(-2deg); opacity: 0.9; }
+            50% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            75% { transform: translateY(-5px) rotate(2deg); opacity: 0.9; }
+        }
+
+        .zolpidem-final-happy .full-page-emoji {
+            animation: happyBounce 1.5s infinite ease-in-out;
+        }
+        .zolpidem-final-sad .full-page-emoji {
+            animation: sadSob 2s infinite ease-in-out;
+        }
+
+        /* No need for body.zolpidem-active class anymore since modal overlays */
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Fixed Top Header Bar -->
+    <header id="topHeader">
+        <!-- Logo on the left -->
+        <button onclick="showPage('main-content')" class="btn-header text-4xl leading-none" aria-label="Home">
+            ✨
+        </button>
+        <!-- Heading in the center -->
+        <h1 class="text-xl sm:text-2xl">Sleep Quality Insights</h1>
+        <!-- Right-aligned group for Theme Toggle & Hamburger Toggle -->
+        <div class="flex items-center space-x-4">
+            <button id="themeToggleBtn" onclick="toggleTheme()" class="bg-peach-custom hover:bg-peach-custom-dark text-gray-800 btn-header">
+                <span id="themeIcon" class="text-xl">☀️</span>
+            </button>
+            <button id="menuToggle" aria-label="Toggle Navigation Menu" onclick="toggleMenu()" class="menu-toggle-button">
+                <span class="menu-toggle-span"></span>
+                <span class="menu-toggle-span"></span>
+                <span class="menu-toggle-span"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hamburger Menu Content -->
+    <div id="hamburgerMenu">
+        <a href="#" onclick="showPage('main-content'); toggleMenu();">🏠 Home</a>
+        <a href="#" onclick="showPage('sleep-quiz-page'); toggleMenu();">😴 Sleep Quality Quiz</a>
+        <a href="#" onclick="showPage('full-summary-page'); toggleMenu();">📜 Detailed Study Snapshot</a>
+        <a href="#" onclick="showPage('connect-page'); toggleMenu();">📧 Connect</a>
+    </div>
+
+    <!-- Main Content Card (Glass Effect) -->
+    <div id="main-content" class="glass-card p-8 sm:p-12 md:p-16 mt-20"> <!-- Added mt-20 for header spacing -->
+        <!-- Logo and Main Title -->
+        <div class="mb-6 flex flex-col items-center">
+            <span class="text-6xl mb-4 animate-pulse">✨</span> <!-- Professional symmetrical emoji logo -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 animate-float">
+                A Hidden Token of Gratitude
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-600 mt-4">
+                This little digital "easter egg" is a heartfelt thank you for your invaluable guidance and support.
+            </p>
+        </div>
+
+        <!-- Section: Personal Message -->
+        <section class="fade-in-section glass-section">
+            <h3 class="text-2xl font-semibold text-blue-700 mb-4">💐 To My Esteemed Guide & Mentors</h3>
+            <p class="text-left text-gray-700">
+                This note is a small expression of immense gratitude for the mentorship, wisdom, and encouragement that illuminated my path throughout my MD Pharmacology journey. Your dedication to teaching and profound insights have been truly instrumental.
+            </p>
+            <p class="text-left text-gray-700 mt-4">
+                To all my teachers and friends, your support, knowledge, and camaraderie made every challenge surmountable and every success sweeter. Thank you for being a part of this significant chapter.
+            </p>
+        </section>
+
+        <!-- Call to Action Buttons -->
+        <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <button onclick="showPage('sleep-quiz-page')"
+                    class="bg-blue-custom hover:bg-blue-custom-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                Discover an Easter Egg 🐣
+            </button>
+            <button onclick="showPage('connect-page')"
+                    class="bg-peach-custom hover:bg-peach-custom-dark text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                Connect with Author 📧
+            </button>
+        </div>
+
+        <!-- Footer with Author's Name -->
+        <footer class="mt-12 text-gray-500 text-sm">
+            <p>From, Dr. Arun T N</p>
+        </footer>
+    </div>
+
+    <!-- Sleep Quality Quiz Page (Hidden by default) -->
+    <div id="sleep-quiz-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20 pb-40" style="display: none;"> <!-- Added display: none; -->
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">😴 Your Sleep Quality Quiz!</h2>
+        <p class="text-xl sm:text-2xl text-gray-600 mb-8">
+            A fun little check on your recent sleep patterns. Be honest for the best (and most entertaining) results!
+        </p>
+
+        <form id="sleepQuizForm" class="text-left text-gray-700 space-y-6">
+            <div class="sleep-quiz-question">
+                <p class="font-semibold mb-2">1. Over the past month, how would you rate your sleep quality in general? 🌟</p>
+                <div class="quiz-option-group" data-question="q1">
+                    <div class="quiz-option" data-value="0">Very good</div>
+                    <div class="quiz-option" data-value="1">Fairly good</div>
+                    <div class="quiz-option" data-value="2">Fairly bad</div>
+                    <div class="quiz-option" data-value="3">Very bad</div>
+                </div>
+            </div>
+
+            <div class="sleep-quiz-question">
+                <p class="font-semibold mb-2">2. Over the past month, how long (in minutes) has it usually taken you to fall asleep each night? ⏳</p>
+                <div class="quiz-option-group" data-question="q2">
+                    <div class="quiz-option" data-value="0">≤ 15 minutes</div>
+                    <div class="quiz-option" data-value="1">16-30 minutes</div>
+                    <div class="quiz-option" data-value="2">31-60 minutes</div>
+                    <div class="quiz-option" data-value="3">> 60 minutes</div>
+                </div>
+            </div>
+
+            <div class="sleep-quiz-question">
+                <p class="font-semibold mb-2">3. Over the past month, how many hours of actual sleep did you get per night? ⏰</p>
+                <div class="quiz-option-group" data-question="q3">
+                    <div class="quiz-option" data-value="0">≥ 7 hours</div>
+                    <div class="quiz-option" data-value="1">6-6.9 hours</div>
+                    <div class="quiz-option" data-value="2">5-5.9 hours</div>
+                    <div class="quiz-option" data-value="3">< 5 hours</div>
+                </div>
+            </div>
+
+            <div class="sleep-quiz-question">
+                <p class="font-semibold mb-2">4. Over the past month, how often have you had trouble sleeping because you wake up in the middle of the night or early morning? 🌙</p>
+                <div class="quiz-option-group" data-question="q4">
+                    <div class="quiz-option" data-value="0">Not during the past month</div>
+                    <div class="quiz-option" data-value="1">Less than once a week</div>
+                    <div class="quiz-option" data-value="2">Once or twice a week</div>
+                    <div class="quiz-option" data-value="3">Three or more times a week</div>
+                </div>
+            </div>
+
+            <div class="sleep-quiz-question">
+                <p class="font-semibold mb-2">5. Over the past month, how much of a problem has it been for you to stay awake while driving, eating meals, or engaging in social activity? 😴</p>
+                <div class="quiz-option-group" data-question="q5">
+                    <div class="quiz-option" data-value="0">No problem at all</div>
+                    <div class="quiz-option" data-value="1">Only a very minor problem</div>
+                    <div class="quiz-option" data-value="2">A moderate problem</div>
+                    <div class="quiz-option" data-value="3">A very great problem</div>
+                </div>
+            </div>
+
+            <button type="submit" class="bg-blue-custom hover:bg-blue-custom-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg w-full mt-8">
+                Get My Sleep Score! 🎉
+            </button>
+        </form>
+
+        <div id="sleepResult" class="mt-8 p-6 rounded-lg shadow-md bg-light-blue" style="display: none;">
+            <h3 class="text-2xl font-semibold text-blue-700 mb-4">Your Sleep Verdict: <span id="sleepEmoji"></span></h3>
+            <p id="sleepComment" class="text-lg text-gray-800"></p>
+        </div>
+
+        <!-- "Back to Main Page" button is removed from here as per request -->
+    </div>
+
+
+    <!-- Full Summary Page (Hidden by default) -->
+    <div id="full-summary-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;"> <!-- Added display: none; -->
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">📜 Detailed Study Snapshot</h2>
+        <h3 class="text-xl sm:text-2xl text-gray-600 mb-8">"Psychotropic drugs and its effect on sleep quality in adults at a tertiary care center-a cross-sectional study."</h3>
+
+        <div class="text-left text-gray-700 space-y-4">
+            <p><strong>Introduction & Objectives:</strong> Psychiatric disorders are highly prevalent, often requiring pharmacological treatment. This study aimed to evaluate the effects, prescribing patterns, and safety of psychotropic drugs on sleep quality in adults. The study highlights the significant impact of these medications on sleep, emphasizing the need for careful monitoring and individualized treatment plans.</p>
+
+            <p><strong>Methodology:</strong> A cross-sectional study involving 120 adult participants (≥18 years) on psychotropic medications for at least 30 days was conducted at Victoria Hospital, BMCRI, from May 2023 to October 2024. Sleep quality was assessed using the Pittsburgh Sleep Quality Index (PSQI). Data on demographics, medical history, medication prescriptions, anticholinergic burden (Medichec), and potential drug-drug interactions (Lexicom) were collected. Statistical analysis employed Kruskal-Wallis, Dwass-Steel-Critchlow-Fligner, and Spearman’s correlation tests.</p>
+
+            <p><strong>Key Results:</strong></p>
+            <ul class="list-disc list-inside pl-4 space-y-2">
+                <li><strong>Overall Sleep Quality:</strong> 73% of participants reported good sleep quality (PSQI > 5 indicated poor sleep), while 27% exhibited poor sleep quality.</li>
+                <li><strong>Medication Patterns:</strong> Atypical antipsychotics (Risperidone, Olanzapine, Quetiapine) were the most frequently prescribed, followed by SSRIs (Sertraline, Fluoxetine, Escitalopram). Sodium Valproate and Lithium were the primary mood stabilizers. Benzodiazepines like Clonazepam and Lorazepam were common hypnotics.</li>
+                <li><strong>Impact of Medication Class on Sleep:</strong>
+                    <ul class="list-circle list-inside pl-6 space-y-1">
+                        <li>The "Need for Medication to Sleep" domain showed significant differences (p=0.005), with the antidepressant-only group having a higher need compared to antipsychotic-only and mixed psychotropic therapy groups.</li>
+                        <li>Atypical antipsychotics were associated with a lower need for sleep medications compared to the non-antipsychotic group (p=0.011).</li>
+                        <li>Atypical antidepressants were linked to significantly more daytime dysfunction (p=0.014), contrasting with some literature.</li>
+                        <li>Mood stabilizers were associated with significantly poorer overall sleep quality (p=0.03) and total PSQI score (p=0.009).</li>
+                    </ul>
+                </li>
+                <li><strong>Correlations:</strong> Duration of illness and anticholinergic burden negatively correlated with the need for sleep medications. Average treatment duration negatively correlated with daytime dysfunction.</li>
+                <li><strong>Adverse Drug Reactions (ADRs):</strong> EPS (Extrapyramidal Symptoms) and weight gain were the most commonly reported ADRs. Trihexyphenidyl was frequently used to manage or prevent EPS.</li>
+            </ul>
+
+            <p><strong>Conclusion:</strong> This study underscores the varied impact of psychotropic medications on sleep quality. While many participants reported good sleep quality, specific drug classes were associated with distinct sleep disturbances. These findings highlight the importance of individualized treatment approaches, meticulous monitoring of sleep parameters, and considering the broader pharmacological profile (including anticholinergic burden and pDDIs) to optimize patient care and minimize sleep disturbances in individuals with psychiatric disorders.</p>
+        </div>
+
+        <button onclick="showPage('main-content')" class="mt-8 bg-blue-custom hover:bg-blue-custom-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            ← Back to Main Page
+        </button>
+    </div>
+
+    <!-- Connect Page (Hidden by default) -->
+    <div id="connect-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;"> <!-- Added display: none; -->
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">📧 Connect with Dr. Arun T N</h2>
+
+        <div class="text-left text-gray-700 space-y-4">
+            <p>Thank you for your interest in my research and professional work. I am Dr. Arun T N, an MD in Pharmacology from the Rajiv Gandhi University of Health Sciences, Karnataka, Bengaluru.</p>
+
+            <p>My academic and research interests lie primarily in psychopharmacology, clinical pharmacology, and understanding drug effects on complex physiological systems, particularly within psychiatric care. I am committed to contributing to evidence-based medical practice and improving patient outcomes through rigorous research.</p>
+
+            <p><strong>Professional Inquiries:</strong></p>
+            <ul class="list-disc list-inside pl-4 space-y-2">
+                <li>For academic collaborations or research discussions, please feel free to reach out.</li>
+                <li>For clinical consultations, kindly follow the standard referral procedures through Bangalore Medical College & Research Institute.</li>
+            </ul>
+
+            <p>While direct contact details are not provided on this public snapshot, you can generally connect with me through professional academic networks or by contacting the Department of Pharmacology at Bangalore Medical Medical College & Research Institute. I look forward to potential opportunities for knowledge exchange and collaboration.</p>
+        </div>
+
+        <div class="mt-8 glass-section">
+            <h3 class="text-2xl font-semibold text-blue-700 mb-4">A Foundation of Support</h3>
+            <div class="text-left text-gray-700 space-y-2">
+                <p>My journey has been built on an incredible foundation of love and encouragement. To my beloved parents, <strong>T D Narayana</strong> and <strong>M Rathnamma</strong>, your unwavering belief has been my constant inspiration. And to my brother, <strong>Darshan T N</strong>, thank you for being a steadfast pillar of support and companionship.</p>
+                <p>The wisdom shared by my **teachers** at Bangalore Medical College & Research Institute, and the camaraderie of my **friends** throughout this challenging yet rewarding period, have been invaluable. Each of you has played a pivotal role in shaping this experience. Thank you.</p>
+            </div>
+        </div>
+
+
+        <button onclick="showPage('main-content')" class="mt-8 bg-peach-custom hover:bg-peach-custom-dark text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            ← Back to Main Page
+        </button>
+    </div>
+
+    <!-- Zolpidem Character and Bubble (fixed position) -->
+    <div id="zolpidemCharacter">
+        <span id="zolpidemEmoji">😀</span> <!-- Default happy face -->
+        <div id="zolpidemBubble" class="speech-bubble"></div>
+    </div>
+
+    <!-- Full Page Zolpidem Animation Overlay (now a modal) -->
+    <div id="zolpidemFullPage">
+        <div class="zolpidem-modal-content">
+            <span id="fullPageZolpidemEmoji" class="full-page-emoji"></span>
+            <p id="fullPageZolpidemComment" class="full-page-comment text-gray-800"></p> <!-- Ensure text is readable against modal background -->
+            <button onclick="hideFullPageZolpidem()" class="mt-8 bg-peach-custom hover:bg-peach-custom-dark text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                Back to Quiz
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for managing theme manually
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+
+            // Apply animation based on theme change
+            if (newTheme === 'dark') {
+                themeIcon.innerHTML = ' '; // Moon
+                themeIcon.style.animation = 'sunToMoon 1s forwards'; // Sleep-themed animation
+            } else {
+                themeIcon.innerHTML = '☀️'; // Sun
+                themeIcon.style.animation = 'moonToSun 1s forwards'; // Sleep-themed animation
+            }
+            // Reset animation after it finishes to allow re-triggering
+            setTimeout(() => {
+                themeIcon.style.animation = 'none';
+            }, 1000);
+        }
+
+        // JavaScript for managing page visibility
+        function showPage(pageId) {
+            // Hide all "pages"
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('sleep-quiz-page').style.display = 'none';
+            document.getElementById('full-summary-page').style.display = 'none';
+            document.getElementById('connect-page').style.display = 'none';
+
+            // Show the requested page
+            document.getElementById(pageId).style.display = 'block';
+
+            // Scroll to the top of the newly displayed page
+            window.scrollTo(0, 0);
+
+            // Close hamburger menu if open
+            const menu = document.getElementById('hamburgerMenu');
+            const toggleButton = document.querySelector('.menu-toggle-button');
+            menu.classList.remove('open'); // Ensure menu closes
+            toggleButton.classList.remove('open'); // Ensure toggle button resets
+
+            // Hide Zolpidem and his bubble when navigating away from quiz, UNLESS it's the quiz page itself.
+            // If it's the quiz page, ensure he's shown with an initial greeting.
+            if (pageId === 'sleep-quiz-page') {
+                const initialGreeting = zolpidemQuestionResponses.initialQuizGreeting;
+                zolpidemBubble.innerText = initialGreeting.comment;
+                zolpidemEmoji.innerText = initialGreeting.emoji;
+                zolpidemCharacter.classList.add('show');
+                zolpidemBubble.classList.add('show');
+                zolpidemEmoji.classList.add('bounce-animation'); // Initial bounce
+                setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+            } else {
+                zolpidemBubble.classList.remove('show');
+                zolpidemCharacter.classList.remove('show');
+            }
+
+            // Also hide the full page Zolpidem modal if it's active
+            hideFullPageZolpidem();
+        }
+
+        // JavaScript for hamburger menu
+        function toggleMenu() {
+            const menu = document.getElementById('hamburgerMenu');
+            const toggleButton = document.querySelector('.menu-toggle-button');
+            menu.classList.toggle('open');
+            toggleButton.classList.toggle('open');
+        }
+
+        // JavaScript for scroll-in animation (Intersection Observer)
+        document.addEventListener("DOMContentLoaded", function() {
+            // Set initial theme to light by default
+            document.body.setAttribute('data-theme', 'light');
+            document.getElementById('themeIcon').innerHTML = '☀️';
+
+
+            const sections = document.querySelectorAll(".fade-in-section");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                    } else {
+                        // Optional: remove is-visible class if element scrolls out of view
+                        // entry.target.classList.remove("is-visible");
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Observe sleep quiz questions for staggered appearance
+            const quizQuestions = document.querySelectorAll(".sleep-quiz-question");
+
+            const quizObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        // Stop observing once visible to prevent re-triggering animations
+                        quizObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: "0px", // default
+                threshold: 0.5 // Trigger when 50% of the question is visible
+            });
+
+            quizQuestions.forEach(question => {
+                quizObserver.observe(question);
+            });
+            
+            // Initialize with main content shown (which is the default in HTML)
+            // showPage('main-content'); // This will be implicitly handled by the HTML structure
+        });
+
+        // Sleep Quiz Logic
+        // Store selected answers as single values per question
+        const quizAnswers = {
+            q1: null, q2: null, q3: null, q4: null, q5: null
+        }; 
+        
+        // Sleepless Zolpidem's comments and emojis for each question's answers
+        const zolpidemQuestionResponses = {
+            q1: {
+                0: { comment: "Sleepless Zolpidem thinks: 'Oh, excellent! Starting strong with a good night's rest. Love to see it! ✨'", emoji: "😁" },
+                1: { comment: "Sleepless Zolpidem notes: 'Fairly good sleep indicates a solid foundation. Room for optimization! 🙂'", emoji: "🙂" },
+                2: { comment: "Sleepless Zolpidem ponders: 'Fairly bad sleep can impact productivity. Let's explore remedies. 😴'", emoji: "😟" },
+                3: { comment: "Sleepless Zolpidem states: 'Very bad sleep is a critical issue. We need to implement immediate recovery strategies. 🚨'", emoji: "😫" }
+            },
+            q2: {
+                0: { comment: "Sleepless Zolpidem notes: 'Rapid onset of sleep is an admirable trait. Maximizing rest! 💪'", emoji: "🤩" },
+                1: { comment: "Sleepless Zolpidem advises: 'Within optimal range. Consider a brief wind-down routine for even quicker results. 🐱'", emoji: "🐱" },
+                2: { comment: "Sleepless Zolpidem analyzes: 'A bit of latency. Perhaps a review of pre-sleep habits is warranted. 🦊'", emoji: "🦊" },
+                3: { comment: "Sleepless Zolpidem is alarmed: 'Over 60 minutes is significant. This warrants immediate attention to sleep hygiene. ⚠️'", emoji: "🚨" }
+            },
+            q3: {
+                0: { comment: "Sleepless Zolpidem commends: 'Excellent sleep duration. Optimal for cognitive function and performance! 🧠'", emoji: "🥳" },
+                1: { comment: "Sleepless Zolpidem recommends: 'A slight deficit, but manageable. A small adjustment could yield significant benefits. 🐰'", emoji: "🐰" },
+                2: { comment: "Sleepless Zolpidem cautions: 'Sub-optimal hours detected. This could impact your daytime efficacy. Priority recalibration needed. 😟'", emoji: "😟" },
+                3: { comment: "Sleepless Zolpidem is concerned: 'Less than 5 hours? My friend, are you a vampire or just incredibly dedicated? Your body's asking for a raise in sleep hours! 🛌'", emoji: "💀" }
+            },
+            q4: {
+                0: { comment: "Sleepless Zolpidem marvels: 'Seamless sleep cycles. Truly a model of efficiency! 🏅'", emoji: "😇" },
+                1: { comment: "Sleepless Zolpidem analyzes: 'Minor disruptions are common. Identifying patterns could be beneficial. 🕵️'", emoji: "😅" },
+                2: { comment: "Sleepless Zolpidem notes: 'Frequent awakenings can fragment sleep architecture. A deeper dive into causative factors is suggested. 🔍'", emoji: "😩" },
+                3: { comment: "Sleepless Zolpidem is concerned: 'Significant fragmentation observed. This level of disruption can severely impact daytime function and requires urgent intervention. 🚨'", emoji: "🚨" }
+            },
+            q5: {
+                0: { comment: "Sleepless Zolpidem confirms: 'Optimal daytime alertness. A clear indicator of restorative sleep! ✅'", emoji: "💪" },
+                1: { comment: "Sleepless Zolpidem suggests: 'Slight dips in alertness. Strategic short breaks can re-energize your focus. ⏸️'", emoji: "🤔" },
+                2: { comment: "Sleepless Zolpidem warns: 'Moderate functional impairment. This impacts your ability to perform at peak. A comprehensive sleep review is recommended. 🩺'", emoji: "😬" },
+                3: { comment: "Sleepless Zolpidem is direct: 'Severe daytime dysfunction. This requires immediate prioritization of sleep to maintain professional safety and effectiveness. 🛑'", emoji: "🚨" }
+            },
+            // New random comments for "change mind" scenarios
+            changeMind: [
+                { comment: "Sleepless Zolpidem observes: A strategic re-evaluation. Intriguing! 🧐", emoji: "🧐" },
+                { comment: "Sleepless Zolpidem notes: A modification detected. I'm here to analyze the new input. 🤨", emoji: "🤨" },
+                { comment: "Why the change of heart, if I may ask? Sleepless Zolpidem is curious about your revised decision. 🤔", emoji: "🤔" },
+                { comment: "Sleepless Zolpidem detects a shift in your assessment. Is there new data influencing this choice? ✨", emoji: "✨" },
+                { comment: "A moment of reflection, perhaps? Sleepless Zolpidem is keen to understand the rationale behind this adjustment. 🕵️", emoji: "🕵️" },
+                { comment: "Curious, a different path is chosen. What insights led to this recalibration? 🔄", emoji: "🔄" },
+                { comment: "Sleepless Zolpidem recognizes a re-prioritization. This dynamic input is valuable for comprehensive analysis. ✅", emoji: "✅" },
+                { comment: "Sleepless Zolpidem wonders: What compels this reconsideration? I sense valuable data emerging. 🧠", emoji: "🧠" },
+                { comment: "Changing your mind? Sleepless Zolpidem applauds the flexibility and precision in your self-reporting. 🚀", emoji: "🚀" },
+                { comment: "Ah, a revised input! Sleepless Zolpidem is here for all the data points, hidden or revealed. 😉", emoji: "😏" },
+                { comment: "Sleepless Zolpidem suspects a deeper narrative behind this adjustment... Care to elaborate? 🤫", emoji: "🤫" },
+                { comment: "A strategic pivot! Sleepless Zolpidem acknowledges the adaptability. Very well. 😼", emoji: "😼" },
+                { comment: "Indeed, a new selection. Sleepless Zolpidem is always ready for evolved perspectives. 🦊", emoji: "🦊" }
+            ],
+            // Initial comment for Zolpidem when quiz page loads
+            initialQuizGreeting: { comment: "Welcome to the Sleep Quality Quiz! Let's unravel your sleep patterns. Tap an option to begin. 😊", emoji: "😊" }
+        };
+
+
+        const zolpidemBubble = document.getElementById('zolpidemBubble');
+        const zolpidemCharacter = document.getElementById('zolpidemCharacter');
+        const zolpidemEmoji = document.getElementById('zolpidemEmoji');
+        const fullPageZolpidem = document.getElementById('zolpidemFullPage');
+        const fullPageZolpidemEmoji = document.getElementById('fullPageZolpidemEmoji');
+        const fullPageZolpidemComment = document.getElementById('fullPageZolpidemComment');
+
+
+        // Add event listeners to quiz options for single selection
+        document.querySelectorAll('.quiz-option-group').forEach(group => {
+            group.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionName = group.getAttribute('data-question');
+                    const newValue = parseInt(this.getAttribute('data-value'));
+                    const oldValue = quizAnswers[questionName]; // Get previously selected value
+
+                    let responseData;
+
+                    // Remove 'selected' class from all options in this group
+                    group.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+
+                    // Add 'selected' class to the clicked option
+                    this.classList.add('selected');
+                    quizAnswers[questionName] = newValue; // Update the answer
+
+                    // Determine comment based on whether the answer was changed or newly selected
+                    if (oldValue !== null && oldValue !== newValue) {
+                        // User changed their mind - select a random "change mind" comment
+                        const changeMindResponses = zolpidemQuestionResponses.changeMind;
+                        responseData = changeMindResponses[Math.floor(Math.random() * changeMindResponses.length)];
+                    } else {
+                        // First selection or re-selecting the same value - use the direct response
+                        responseData = zolpidemQuestionResponses[questionName][newValue];
+                    }
+                    
+                    // Display Zolpidem's comment and change emoji
+                    zolpidemBubble.innerText = responseData.comment;
+                    zolpidemEmoji.innerText = responseData.emoji;
+                    
+                    zolpidemCharacter.classList.add('show'); // Show character with transition
+                    zolpidemBubble.classList.add('show'); // Show bubble with transition
+                    zolpidemEmoji.classList.add('bounce-animation'); // Add bounce animation
+                    // Remove animation class after it completes to allow re-triggering
+                    setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+                });
+            });
+        });
+
+        document.getElementById('sleepQuizForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            let totalScore = 0;
+            const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+            let allAnswered = true;
+
+            questions.forEach(q => {
+                if (quizAnswers[q] === null) { // Check if an option is selected for the question
+                    allAnswered = false;
+                } else {
+                    totalScore += quizAnswers[q];
+                }
+            });
+
+            if (!allAnswered) {
+                alert("Please answer all questions to get your sleep score!");
+                return;
+            }
+
+            // Hide regular Zolpidem and its bubble
+            // Also hide the main content of the quiz page before showing modal, for clean transition
+            document.getElementById('sleep-quiz-page').style.display = 'none';
+
+
+            zolpidemBubble.classList.remove('show');
+            zolpidemCharacter.classList.remove('show');
+
+            let finalComment = "";
+            let emoji = "";
+            let animationClass = "";
+
+            if (totalScore <= 5) {
+                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Phenomenal! It seems like sleep has been quite the ally lately. Keep harnessing that restorative power for all your amazing endeavors. Perhaps even conquer a new skill with all that extra energy? 😉`;
+                emoji = "🌟";
+                animationClass = "zolpidem-final-happy";
+            } else if (totalScore <= 10) {
+                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Solid. A good night's rest sets the stage for productive days. Might there be a tiny corner where even better sleep could be found? Just a thought! 👍`;
+                emoji = "👍";
+                animationClass = "zolpidem-final-happy"; // Still relatively good
+            } else if (totalScore <= 15) {
+                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Not quite optimal. Is the ambition burning a little too bright after hours? Remember, the greatest minds pause to recharge. Consider a little more time with your pillow. 😴`;
+                emoji = "😴";
+                animationClass = "zolpidem-final-sad"; // Leaning towards concerning
+            } else {
+                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: A bit of a sleep emergency, perhaps? One wonders if the pursuit of excellence is costing some precious Zzz's. True genius knows when to hit the 'off' switch for a refresh. Don't forget that vital rest! 🚨`;
+                emoji = "🚨";
+                animationClass = "zolpidem-final-sad";
+            }
+
+            // Now trigger Zolpidem modal animation
+            fullPageZolpidemEmoji.innerText = emoji; // Use the final verdict emoji for consistency
+            fullPageZolpidemComment.innerText = finalComment;
+
+            // Remove any existing animation classes from the emoji
+            fullPageZolpidemEmoji.classList.remove("zolpidem-final-happy", "zolpidem-final-sad");
+            // Add the new animation class to the emoji
+            fullPageZolpidemEmoji.classList.add(animationClass);
+            
+            fullPageZolpidem.classList.add('show'); // Show the modal overlay
+        });
+
+        function hideFullPageZolpidem() {
+            fullPageZolpidem.classList.remove('show');
+            // Remove animation classes from the emoji after hiding
+            fullPageZolpidemEmoji.classList.remove("zolpidem-final-happy", "zolpidem-final-sad");
+
+            // Bring back the quiz page content
+            document.getElementById('sleep-quiz-page').style.display = 'block';
+
+            // Also re-show Zolpidem on the quiz page with his initial greeting
+            const initialGreeting = zolpidemQuestionResponses.initialQuizGreeting;
+            zolpidemBubble.innerText = initialGreeting.comment;
+            zolpidemEmoji.innerText = initialGreeting.emoji;
+            zolpidemCharacter.classList.add('show');
+            zolpidemBubble.classList.add('show');
+            zolpidemEmoji.classList.add('bounce-animation');
+            setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+        }
+    </script>
+</body>
+</html>
+ 
