@@ -421,68 +421,9 @@
             animation: sadSob 2s infinite ease-in-out;
         }
 
-        /* Style for the non-clickable personal details trigger */
-        .personal-details-trigger {
-            cursor: pointer; /* Still allow pointer to indicate interactivity, but no underline */
-            text-decoration: none;
-            color: var(--color-text-light-light); /* Subtler color to not look like a link */
-            font-weight: 500;
-            transition: color 0.2s ease;
-            display: inline-block; /* To allow padding/margin if needed */
-        }
-        .personal-details-trigger:hover {
-            color: var(--color-primary-blue-light-text); /* Slight highlight on hover */
-        }
-
-        /* Modal for personal details */
-        #personal-details-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000; /* On top of everything */
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-        }
-        #personal-details-modal.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        #personal-details-modal .modal-content {
-            background-color: var(--color-card-bg-light);
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-            padding: 2rem;
-            max-width: 90%;
-            width: 600px; /* Slightly wider for the list of names */
-            max-height: 90vh;
-            overflow-y: auto;
-            text-align: left; /* Align text left inside modal */
-            position: relative;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        #personal-details-modal .modal-close-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 1.5rem;
-            color: var(--color-text-dark-light);
-            transition: transform 0.2s ease, color 0.2s ease;
-        }
-        #personal-details-modal .modal-close-btn:hover {
-            transform: scale(1.1);
-            color: var(--color-primary-peach-light-text);
+        /* Class to hide pages */
+        .hidden-page {
+            display: none;
         }
 
     </style>
@@ -518,7 +459,7 @@
     </div>
 
     <!-- Main Content Card (Glass Effect) -->
-    <div id="main-content" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;"> <!-- Hidden by default -->
+    <div id="main-content" class="glass-card p-8 sm:p-12 md:p-16 mt-20">
         <!-- Logo and Main Title -->
         <div class="mb-6 flex flex-col items-center">
             <span class="text-6xl mb-4 animate-bounce">🥳</span> <!-- Party emoji logo with subtle bounce -->
@@ -534,11 +475,34 @@
         <section class="fade-in-section glass-section">
             <h3 class="text-2xl font-semibold text-blue-700 mb-4">💐 To My Esteemed Guide & Mentors</h3>
             <p class="text-left text-gray-700">
-                This note is a small expression of immense gratitude for the mentorship, wisdom, and encouragement that illuminated my path throughout my MD Pharmacology journey. A special thank you to my guide, <strong>Dr. Kavitha Rajarathna, MD, Professor, Department of Pharmacology</strong>, for her invaluable guidance and unwavering support.
+                This note is a small expression of immense gratitude for the mentorship, wisdom, and encouragement that illuminated my path throughout my MD Pharmacology journey. A special thank-you to my guide, <strong>Dr. Kavitha Rajarathna, MD, Professor, Department of Pharmacology</strong>, for her invaluable guidance and unwavering support.
             </p>
             <p class="text-left text-gray-700 mt-4">
                 To all my teachers and friends, your support, knowledge, and camaraderie made every challenge surmountable and every success sweeter. Thank you for being a part of this significant chapter.
             </p>
+        </section>
+
+        <!-- Consolidated Section for All Mentors and Friends - now directly on main page -->
+        <section class="mt-8 glass-section fade-in-section">
+            <h3 class="text-2xl font-semibold text-blue-700 mb-4">With Immense Gratitude</h3>
+            <div class="text-left text-gray-700 space-y-2">
+                <p>To my beloved parents, <strong>T D Narayana</strong> and <strong>M Rathnamma</strong>, and my brother, <strong>Darshan T N</strong>, your unwavering belief and endless love have been my constant inspiration and strength.</p>
+
+                <p class="mt-4">My deepest gratitude to my esteemed teachers and professors at Bangalore Medical College & Research Institute:</p>
+                <p class="mt-2 pl-4">
+                    Dr. Geetha A., MD, Professor and Head, Department of Pharmacology<br>
+                    Dr. Mamatha K R., MD, Professor, Department of Pharmacology<br>
+                    Dr. Kavitha Rajarathna, MD, Professor, Department of Pharmacology<br>
+                    Dr. Sushma M, MD, Professor, Department of Pharmacology<br>
+                    Dr. Praveen Panchaksharimath, MD, Associate Professor<br>
+                    Dr. Laxminarayana Kamath, MD, Assistant Professor<br>
+                    Dr. Vijayalakshmi, MD, Assistant Professor
+                </p>
+
+                <p class="mt-4">And to my wonderful friends, who made every challenge surmountable and every success sweeter, especially:</p>
+                <p><strong>UG Friends:</strong> Dr. Ashadeepa S G, Dr. Chinumaya, Dr. Pramod V, Dr. Darshan, Dr. Ishwar K, Dr. Pooja Magadum, Dr. Shadaksharappa Gouda.</p>
+                <p><strong>PG Friends:</strong> Dr. Yamini kanakamedala, Dr. Maruthi Prasanna, Dr. Viswanathan, Dr. Shreya Bhat, Dr. Karthik Raja, Dr. Pradeep Katake, Dr. Sushma P, Dr. Subasree.</p>
+            </div>
         </section>
 
         <!-- Call to Action Buttons -->
@@ -553,11 +517,6 @@
             </button>
         </div>
 
-        <!-- Trigger for Extended Acknowledgements (styled to not look clickable) -->
-        <p class="mt-12 text-center">
-            <span class="personal-details-trigger" onclick="showPersonalDetailsModal()">Discover more about my journey and supporters.</span>
-        </p>
-
         <!-- Footer with Author's Name -->
         <footer class="mt-12 text-gray-500 text-sm">
             <p>From, Dr. Arun T N</p>
@@ -565,7 +524,7 @@
     </div>
 
     <!-- Sleep Quality Quiz Page (Hidden by default) -->
-    <div id="sleep-quiz-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20 pb-40" style="display: none;">
+    <div id="sleep-quiz-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20 pb-40 hidden-page">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">😴 Your Sleep Quality Quiz!</h2>
         <p class="text-xl sm:text-2xl text-gray-600 mb-8">
             A fun little check on your recent sleep patterns. Be honest for the best (and most entertaining) results!
@@ -637,7 +596,7 @@
 
 
     <!-- Full Summary Page (Hidden by default) -->
-    <div id="full-summary-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;">
+    <div id="full-summary-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20 hidden-page">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">📜 Detailed Study Snapshot</h2>
         <h3 class="text-xl sm:text-2xl text-gray-600 mb-8">"Psychotropic drugs and its effect on sleep quality in adults at a tertiary care center-a cross-sectional study."</h3>
 
@@ -671,7 +630,7 @@
     </div>
 
     <!-- Connect Page (Hidden by default) -->
-    <div id="connect-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20" style="display: none;">
+    <div id="connect-page" class="glass-card p-8 sm:p-12 md:p-16 mt-20 hidden-page">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">📧 Connect with Dr. Arun T N</h2>
 
         <div class="text-left text-gray-700 space-y-4">
@@ -701,37 +660,11 @@
     <!-- Full Page Zolpidem Animation Overlay (now a modal) -->
     <div id="zolpidemFullPage">
         <div class="zolpidem-modal-content">
-            <span id="fullPageZolpidemEmoji" class="full-page-emoji"></span>
-            <p id="fullPageZolpidemComment" class="full-page-comment text-gray-800"></p> <!-- Ensure text is readable against modal background -->
+            <span id="fullPageZolpidemEmoji"></span>
+            <p id="fullPageZolpidemComment"></p>
             <button onclick="hideFullPageZolpidem()" class="mt-8 bg-peach-custom hover:bg-peach-custom-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 Back to Quiz
             </button>
-        </div>
-    </div>
-
-    <!-- Personal Details Modal (Hidden by default) -->
-    <div id="personal-details-modal" style="display: none;">
-        <div class="modal-content">
-            <button class="modal-close-btn" onclick="hidePersonalDetailsModal()">❌ Close</button>
-            <h3 class="text-2xl font-semibold text-blue-700 mb-4">With Immense Gratitude</h3>
-            <div class="text-left text-gray-700 space-y-2">
-                <p>To my beloved parents, <strong>T D Narayana</strong> and <strong>M Rathnamma</strong>, and my brother, <strong>Darshan T N</strong>, your unwavering belief and endless love have been my constant inspiration and strength.</p>
-
-                <p class="mt-4">My deepest gratitude to my esteemed teachers and professors at Bangalore Medical College & Research Institute:</p>
-                <ul class="list-disc list-inside pl-4">
-                    <li><strong>Dr. Geetha A., MD, Professor and Head, Department of Pharmacology</strong></li>
-                    <li><strong>Dr. Mamatha K R., MD, Professor, Department of Pharmacology</strong></li>
-                    <li><strong>Dr. Kavitha Rajarathna, MD, Professor, Department of Pharmacology</strong></li>
-                    <li><strong>Dr. Sushma M, MD, Professor, Department of Pharmacology</strong></li>
-                    <li><strong>Dr. Praveen Panchaksharimath, MD, Associate Professor</strong></li>
-                    <li><strong>Dr. Laxminarayana Kamath, MD, Assistant Professor</strong></li>
-                    <li><strong>Dr. Vijayalakshmi, MD, Assistant Professor</strong></li>
-                </ul>
-
-                <p class="mt-4">And to my wonderful friends, who made every challenge surmountable and every success sweeter, especially:</p>
-                <p><strong>UG Friends:</strong> Dr. Ashadeepa S G, Dr. Chinumaya, Dr. Pramod V, Dr. Darshan, Dr. Ishwar K, Dr. Pooja Magadum, Dr. Shadaksharappa Gouda.</p>
-                <p><strong>PG Friends:</strong> Dr. Yamini kanakamedala, Dr. Maruthi Prasanna, Dr. Viswanathan, Dr. Shreya Bhat, Dr. Karthik Raja, Dr. Pradeep Katake, Dr. Sushma P, Dr. Subasree.</p>
-            </div>
         </div>
     </div>
 
@@ -741,34 +674,53 @@
         const questions = ['q1', 'q2', 'q3', 'q4', 'q5']; // Array of question keys
         const quizQuestionElements = []; // To store DOM references of question divs
 
+        // Get common elements once to avoid repeated DOM queries
+        const mainContent = document.getElementById('main-content');
+        const sleepQuizPage = document.getElementById('sleep-quiz-page');
+        const fullSummaryPage = document.getElementById('full-summary-page');
+        const connectPage = document.getElementById('connect-page');
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const menuToggleButton = document.querySelector('.menu-toggle-button');
+        const zolpidemBubble = document.getElementById('zolpidemBubble');
+        const zolpidemCharacter = document.getElementById('zolpidemCharacter');
+        const zolpidemEmoji = document.getElementById('zolpidemEmoji');
+        const fullPageZolpidem = document.getElementById('zolpidemFullPage');
+        const fullPageZolpidemEmoji = document.getElementById('fullPageZolpidemEmoji');
+        const fullPageZolpidemComment = document.getElementById('fullPageZolpidemComment');
+        const sleepQuizFormSubmitButton = document.getElementById('sleepQuizForm') ? document.getElementById('sleepQuizForm').querySelector('button[type="submit"]') : null;
+
+
+        // Function to hide all main content pages and modals
+        function hideAllPagesAndModals() {
+            [mainContent, sleepQuizPage, fullSummaryPage, connectPage].forEach(page => {
+                if (page) page.classList.add('hidden-page');
+            });
+            if (fullPageZolpidem) {
+                fullPageZolpidem.classList.remove('show'); // Remove transition class
+                fullPageZolpidem.classList.add('hidden-page'); // Ensure it's truly hidden
+            }
+        }
+
         // JavaScript for managing page visibility
         function showPage(pageId) {
-            // Hide all "pages" and modals
-            const allPages = ['main-content', 'sleep-quiz-page', 'full-summary-page', 'connect-page', 'personal-details-modal'];
-            allPages.forEach(id => {
-                const pageElement = document.getElementById(id);
-                if (pageElement) {
-                    pageElement.style.display = 'none';
-                    // If it's a modal, also remove the 'show' class for proper opacity transition
-                    if (id === 'personal-details-modal' || id === 'zolpidemFullPage') {
-                         pageElement.classList.remove('show');
-                    }
-                }
-            });
+            console.log(`Attempting to show page: ${pageId}`); // Debugging
+
+            hideAllPagesAndModals(); // Hide everything first
 
             // Show the requested page
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
-                targetPage.style.display = 'block';
+                targetPage.classList.remove('hidden-page');
+                console.log(`Shown: ${pageId}`); // Debugging
+            } else {
+                console.error(`Page with ID '${pageId}' not found.`); // Debugging
             }
 
             // Scroll to the top of the newly displayed page
             window.scrollTo(0, 0);
 
             // Close hamburger menu if open
-            const menu = document.getElementById('hamburgerMenu');
-            const toggleButton = document.querySelector('.menu-toggle-button');
-            if (menu.classList.contains('open')) {
+            if (hamburgerMenu.classList.contains('open')) {
                 toggleMenu(); // Call toggleMenu to close it and reset button state
             }
 
@@ -790,41 +742,45 @@
 
                 // Initial Zolpidem greeting for quiz page
                 const initialGreeting = zolpidemQuestionResponses.initialQuizGreeting;
-                zolpidemBubble.innerText = initialGreeting.comment;
-                zolpidemEmoji.innerText = initialGreeting.emoji;
-                zolpidemCharacter.classList.add('show');
-                zolpidemBubble.classList.add('show');
-                zolpidemEmoji.classList.add('bounce-animation'); // Initial bounce
-                setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+                if (zolpidemBubble) zolpidemBubble.innerText = initialGreeting.comment;
+                if (zolpidemEmoji) zolpidemEmoji.innerText = initialGreeting.emoji;
+                if (zolpidemCharacter) zolpidemCharacter.classList.add('show');
+                if (zolpidemBubble) zolpidemBubble.classList.add('show');
+                if (zolpidemEmoji) {
+                    zolpidemEmoji.classList.add('bounce-animation'); // Initial bounce
+                    setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+                }
 
                 // Disable submit button initially
-                document.getElementById('sleepQuizForm').querySelector('button[type="submit"]').classList.add('disabled');
+                if (sleepQuizFormSubmitButton) sleepQuizFormSubmitButton.classList.add('disabled');
 
             } else {
                 // Hide Zolpidem when navigating away from quiz page
-                zolpidemBubble.classList.remove('show');
-                zolpidemCharacter.classList.remove('show');
+                if (zolpidemBubble) zolpidemBubble.classList.remove('show');
+                if (zolpidemCharacter) zolpidemCharacter.classList.remove('show');
             }
-
-            // Also hide the full page Zolpidem modal if it's active
-            hideFullPageZolpidem();
         }
 
         // JavaScript for hamburger menu
         function toggleMenu() {
-            const menu = document.getElementById('hamburgerMenu');
-            const toggleButton = document.querySelector('.menu-toggle-button');
-            menu.classList.toggle('open');
-            toggleButton.classList.toggle('open');
+            if (hamburgerMenu) hamburgerMenu.classList.toggle('open');
+            if (menuToggleButton) menuToggleButton.classList.toggle('open');
         }
 
         // JavaScript for scroll-in animation (Intersection Observer)
         document.addEventListener("DOMContentLoaded", function() {
+            console.log("DOM Content Loaded. Initializing page display."); // Debugging
+
             // Populate quizQuestionElements once DOM is ready
             document.querySelectorAll(".sleep-quiz-question").forEach(q => quizQuestionElements.push(q));
             
-            // Initial page load should default to main-content
-            showPage('main-content');
+            // Hide all pages initially
+            hideAllPagesAndModals(); // Use the robust hiding function
+
+            // Show only the main-content page initially
+            if (mainContent) mainContent.classList.remove('hidden-page');
+            console.log("main-content should be visible now."); // Debugging
+
 
             const sections = document.querySelectorAll(".fade-in-section");
 
@@ -930,14 +886,6 @@
         };
 
 
-        const zolpidemBubble = document.getElementById('zolpidemBubble');
-        const zolpidemCharacter = document.getElementById('zolpidemCharacter');
-        const zolpidemEmoji = document.getElementById('zolpidemEmoji');
-        const fullPageZolpidem = document.getElementById('zolpidemFullPage');
-        const fullPageZolpidemEmoji = document.getElementById('fullPageZolpidemEmoji');
-        const fullPageZolpidemComment = document.getElementById('fullPageZolpidemComment');
-
-
         // Add event listeners to quiz options for single selection
         document.querySelectorAll('.quiz-option-group').forEach(group => {
             group.querySelectorAll('.quiz-option').forEach(option => {
@@ -959,12 +907,14 @@
                     if (questionIndex !== firstUnansweredIndex) {
                         const outOfOrderResponses = zolpidemQuestionResponses.outOfOrder;
                         const responseData = outOfOrderResponses[Math.floor(Math.random() * outOfOrderResponses.length)];
-                        zolpidemBubble.innerText = responseData.comment;
-                        zolpidemEmoji.innerText = responseData.emoji;
-                        zolpidemCharacter.classList.add('show');
-                        zolpidemBubble.classList.add('show');
-                        zolpidemEmoji.classList.add('bounce-animation');
-                        setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+                        if (zolpidemBubble) zolpidemBubble.innerText = responseData.comment;
+                        if (zolpidemEmoji) zolpidemEmoji.innerText = responseData.emoji;
+                        if (zolpidemCharacter) zolpidemCharacter.classList.add('show');
+                        if (zolpidemBubble) zolpidemBubble.classList.add('show');
+                        if (zolpidemEmoji) {
+                            zolpidemEmoji.classList.add('bounce-animation');
+                            setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+                        }
                         return; // Stop further processing for this click
                     }
 
@@ -991,13 +941,15 @@
                     }
                     
                     // Display Zolpidem's comment and change emoji
-                    zolpidemBubble.innerText = responseData.comment;
-                    zolpidemEmoji.innerText = responseData.emoji;
+                    if (zolpidemBubble) zolpidemBubble.innerText = responseData.comment;
+                    if (zolpidemEmoji) zolpidemEmoji.innerText = responseData.emoji;
                     
-                    zolpidemCharacter.classList.add('show');
-                    zolpidemBubble.classList.add('show');
-                    zolpidemEmoji.classList.add('bounce-animation');
-                    setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+                    if (zolpidemCharacter) zolpidemCharacter.classList.add('show');
+                    if (zolpidemBubble) zolpidemBubble.classList.add('show');
+                    if (zolpidemEmoji) {
+                        zolpidemEmoji.classList.add('bounce-animation');
+                        setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
+                    }
 
                     // Logic to reveal the next question
                     const nextQuestionIndex = questionIndex + 1;
@@ -1021,112 +973,103 @@
                             break;
                         }
                     }
-                    const submitButton = document.getElementById('sleepQuizForm').querySelector('button[type="submit"]');
-                    if (allQuestionsAnswered) {
-                        submitButton.classList.remove('disabled');
-                    } else {
-                        submitButton.classList.add('disabled');
+                    if (sleepQuizFormSubmitButton) {
+                        if (allQuestionsAnswered) {
+                            sleepQuizFormSubmitButton.classList.remove('disabled');
+                        } else {
+                            sleepQuizFormSubmitButton.classList.add('disabled');
+                        }
                     }
                 });
             });
         });
 
-        document.getElementById('sleepQuizForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+        if (document.getElementById('sleepQuizForm')) {
+            document.getElementById('sleepQuizForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
 
-            const submitButton = document.getElementById('sleepQuizForm').querySelector('button[type="submit"]');
-            if (submitButton.classList.contains('disabled')) {
-                alert("Please answer all questions to get your sleep score!");
-                return;
-            }
+                if (sleepQuizFormSubmitButton && sleepQuizFormSubmitButton.classList.contains('disabled')) {
+                    // Using `alert` here as it's a simple, non-critical user notification.
+                    // For more complex apps, a custom modal is preferable.
+                    alert("Please answer all questions to get your sleep score!");
+                    return;
+                }
 
-            let totalScore = 0;
-            questions.forEach(q => { // Use global questions array
-                totalScore += quizAnswers[q];
+                let totalScore = 0;
+                questions.forEach(q => { // Use global questions array
+                    totalScore += quizAnswers[q];
+                });
+
+                // Hide regular Zolpidem and its bubble
+                // Also hide the main content of the quiz page before showing modal, for clean transition
+                if (sleepQuizPage) sleepQuizPage.classList.add('hidden-page');
+
+
+                if (zolpidemBubble) zolpidemBubble.classList.remove('show');
+                if (zolpidemCharacter) zolpidemCharacter.classList.remove('show');
+
+                let finalComment = "";
+                let emoji = "";
+                let animationClass = "";
+
+                if (totalScore <= 5) {
+                    finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Phenomenal! It seems like sleep has been quite the ally lately. Keep harnessing that restorative power for all your amazing endeavors. Perhaps even conquer a new skill with all that extra energy? 😉`;
+                    emoji = "🥳";
+                    animationClass = "zolpidem-final-happy";
+                } else if (totalScore <= 10) {
+                    finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Solid. A good night's rest sets the stage for productive days. Might there be a tiny corner where even better sleep could be found? Just a thought! 👍`;
+                    emoji = "👍";
+                    animationClass = "zolpidem-final-happy"; // Still relatively good
+                } else if (totalScore <= 15) {
+                    finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Not quite optimal. Is the ambition burning a little too bright after hours? Remember, the greatest minds pauses to recharge. Consider a little more time with your pillow. 😴`;
+                    emoji = "😴";
+                    animationClass = "zolpidem-final-sad"; // Leaning towards concerning
+                } else {
+                    finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: A bit of a sleep emergency, perhaps? One wonders if the pursuit of excellence is costing some precious Zzz's. True genius knows when to hit the 'off' switch for a refresh. Don't forget that vital rest! 🚨`;
+                    emoji = " ";
+                    animationClass = "zolpidem-final-sad";
+                }
+
+                // Now trigger Zolpidem modal animation
+                if (fullPageZolpidemEmoji) fullPageZolpidemEmoji.innerText = emoji; // Use the final verdict emoji for consistency
+                if (fullPageZolpidemComment) fullPageZolpidemComment.innerText = finalComment;
+
+                // Remove any existing animation classes from the emoji
+                if (fullPageZolpidemEmoji) fullPageZolpidemEmoji.classList.remove("zolpidem-final-happy", "zolpidem-final-sad");
+                // Add the new animation class to the emoji
+                if (fullPageZolpidemEmoji) fullPageZolpidemEmoji.classList.add(animationClass);
+                
+                if (fullPageZolpidem) {
+                    fullPageZolpidem.classList.add('show'); // Show the modal overlay
+                    fullPageZolpidem.classList.remove('hidden-page'); // Ensure it's not hidden by the class
+                }
             });
+        }
 
-            // Hide regular Zolpidem and its bubble
-            // Also hide the main content of the quiz page before showing modal, for clean transition
-            document.getElementById('sleep-quiz-page').style.display = 'none';
-
-
-            zolpidemBubble.classList.remove('show');
-            zolpidemCharacter.classList.remove('show');
-
-            let finalComment = "";
-            let emoji = "";
-            let animationClass = "";
-
-            if (totalScore <= 5) {
-                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Phenomenal! It seems like sleep has been quite the ally lately. Keep harnessing that restorative power for all your amazing endeavors. Perhaps even conquer a new skill with all that extra energy? 😉`;
-                emoji = "�";
-                animationClass = "zolpidem-final-happy";
-            } else if (totalScore <= 10) {
-                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Solid. A good night's rest sets the stage for productive days. Might there be a tiny corner where even better sleep could be found? Just a thought! 👍`;
-                emoji = "👍";
-                animationClass = "zolpidem-final-happy"; // Still relatively good
-            } else if (totalScore <= 15) {
-                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: Not quite optimal. Is the ambition burning a little too bright after hours? Remember, the greatest minds pauses to recharge. Consider a little more time with your pillow. 😴`;
-                emoji = "😴";
-                animationClass = "zolpidem-final-sad"; // Leaning towards concerning
-            } else {
-                finalComment = `(Score: ${totalScore}) Sleepless Zolpidem's final analysis: A bit of a sleep emergency, perhaps? One wonders if the pursuit of excellence is costing some precious Zzz's. True genius knows when to hit the 'off' switch for a refresh. Don't forget that vital rest! 🚨`;
-                emoji = "🚨";
-                animationClass = "zolpidem-final-sad";
-            }
-
-            // Now trigger Zolpidem modal animation
-            fullPageZolpidemEmoji.innerText = emoji; // Use the final verdict emoji for consistency
-            fullPageZolpidemComment.innerText = finalComment;
-
-            // Remove any existing animation classes from the emoji
-            fullPageZolpidemEmoji.classList.remove("zolpidem-final-happy", "zolpidem-final-sad");
-            // Add the new animation class to the emoji
-            fullPageZolpidemEmoji.classList.add(animationClass);
-            
-            fullPageZolpidem.classList.add('show'); // Show the modal overlay
-        });
 
         function hideFullPageZolpidem() {
-            fullPageZolpidem.classList.remove('show');
+            if (fullPageZolpidem) {
+                fullPageZolpidem.classList.remove('show');
+                fullPageZolpidem.classList.add('hidden-page'); // Use class to hide
+            }
             // Remove animation classes from the emoji after hiding
-            fullPageZolpidemEmoji.classList.remove("zolpidem-final-happy", "zolpidem-final-sad");
+            if (fullPageZolpidemEmoji) fullPageZolpidemEmoji.classList.remove("zolpidem-final-happy", "zolpidem-final-sad");
 
             // Bring back the quiz page content
-            document.getElementById('sleep-quiz-page').style.display = 'block';
+            if (sleepQuizPage) sleepQuizPage.classList.remove('hidden-page'); // Use class
 
             // Also re-show Zolpidem on the quiz page with his initial greeting
             const initialGreeting = zolpidemQuestionResponses.initialQuizGreeting;
-            zolpidemBubble.innerText = initialGreeting.comment;
-            zolpidemEmoji.innerText = initialGreeting.emoji;
-            zolpidemCharacter.classList.add('show');
-            zolpidemBubble.classList.add('show');
-            zolpidemEmoji.classList.add('bounce-animation');
-            setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
-        }
-
-        // Functions for the new personal details modal
-        function showPersonalDetailsModal() {
-            document.getElementById('personal-details-modal').style.display = 'flex';
-            document.getElementById('personal-details-modal').classList.add('show');
-            // Hide Zolpidem character if visible while modal is open
-            zolpidemCharacter.classList.remove('show');
-            zolpidemBubble.classList.remove('show');
-        }
-
-        function hidePersonalDetailsModal() {
-            document.getElementById('personal-details-modal').classList.remove('show');
-            // Give a slight delay for opacity transition before setting display: none
-            setTimeout(() => {
-                document.getElementById('personal-details-modal').style.display = 'none';
-            }, 500); // Match CSS transition duration
-            // Re-show Zolpidem if on quiz page (or decide if he should only appear there)
-            if (document.getElementById('sleep-quiz-page').style.display === 'block') {
-                zolpidemCharacter.classList.add('show');
-                zolpidemBubble.classList.add('show');
+            if (zolpidemBubble) zolpidemBubble.innerText = initialGreeting.comment;
+            if (zolpidemEmoji) zolpidemEmoji.innerText = initialGreeting.emoji;
+            if (zolpidemCharacter) zolpidemCharacter.classList.add('show');
+            if (zolpidemBubble) zolpidemBubble.classList.add('show');
+            if (zolpidemEmoji) {
+                zolpidemEmoji.classList.add('bounce-animation');
+                setTimeout(() => zolpidemEmoji.classList.remove('bounce-animation'), 600);
             }
         }
     </script>
 </body>
 </html>
-�
+ 
